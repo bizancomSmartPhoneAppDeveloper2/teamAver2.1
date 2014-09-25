@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		87E57A1819D3CFD100F6A9FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E57A1719D3CFD100F6A9FD /* main.m */; };
+		87E57A1B19D3CFD100F6A9FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E57A1A19D3CFD100F6A9FD /* AppDelegate.m */; };
+		87E57A1E19D3CFD100F6A9FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E57A1D19D3CFD100F6A9FD /* ViewController.m */; };
+		87E57A2119D3CFD100F6A9FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87E57A1F19D3CFD100F6A9FD /* Main.storyboard */; };
+		87E57A2319D3CFD100F6A9FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87E57A2219D3CFD100F6A9FD /* Images.xcassets */; };
+		87E57A2619D3CFD100F6A9FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */; };
+		87E57A3219D3CFD100F6A9FD /* KOKOIKETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87E57A2C19D3CFD100F6A9FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87E57A0A19D3CFD100F6A9FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87E57A1119D3CFD100F6A9FD;
+			remoteInfo = KOKOIKE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		87E57A1219D3CFD100F6A9FD /* KOKOIKE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOKOIKE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E57A1619D3CFD100F6A9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87E57A1719D3CFD100F6A9FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		87E57A1919D3CFD100F6A9FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		87E57A1A19D3CFD100F6A9FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		87E57A1C19D3CFD100F6A9FD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		87E57A1D19D3CFD100F6A9FD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		87E57A2019D3CFD100F6A9FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		87E57A2219D3CFD100F6A9FD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		87E57A2519D3CFD100F6A9FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		87E57A2B19D3CFD100F6A9FD /* KOKOIKETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKOIKETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87E57A3019D3CFD100F6A9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKOIKETests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87E57A0F19D3CFD100F6A9FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E57A2819D3CFD100F6A9FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87E57A0919D3CFD100F6A9FD = {
+			isa = PBXGroup;
+			children = (
+				87E57A1419D3CFD100F6A9FD /* KOKOIKE */,
+				87E57A2E19D3CFD100F6A9FD /* KOKOIKETests */,
+				87E57A1319D3CFD100F6A9FD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87E57A1319D3CFD100F6A9FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87E57A1219D3CFD100F6A9FD /* KOKOIKE.app */,
+				87E57A2B19D3CFD100F6A9FD /* KOKOIKETests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87E57A1419D3CFD100F6A9FD /* KOKOIKE */ = {
+			isa = PBXGroup;
+			children = (
+				87E57A1919D3CFD100F6A9FD /* AppDelegate.h */,
+				87E57A1A19D3CFD100F6A9FD /* AppDelegate.m */,
+				87E57A1C19D3CFD100F6A9FD /* ViewController.h */,
+				87E57A1D19D3CFD100F6A9FD /* ViewController.m */,
+				87E57A1F19D3CFD100F6A9FD /* Main.storyboard */,
+				87E57A2219D3CFD100F6A9FD /* Images.xcassets */,
+				87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */,
+				87E57A1519D3CFD100F6A9FD /* Supporting Files */,
+			);
+			path = KOKOIKE;
+			sourceTree = "<group>";
+		};
+		87E57A1519D3CFD100F6A9FD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87E57A1619D3CFD100F6A9FD /* Info.plist */,
+				87E57A1719D3CFD100F6A9FD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87E57A2E19D3CFD100F6A9FD /* KOKOIKETests */ = {
+			isa = PBXGroup;
+			children = (
+				87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */,
+				87E57A2F19D3CFD100F6A9FD /* Supporting Files */,
+			);
+			path = KOKOIKETests;
+			sourceTree = "<group>";
+		};
+		87E57A2F19D3CFD100F6A9FD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				87E57A3019D3CFD100F6A9FD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		87E57A1119D3CFD100F6A9FD /* KOKOIKE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E57A3519D3CFD100F6A9FD /* Build configuration list for PBXNativeTarget "KOKOIKE" */;
+			buildPhases = (
+				87E57A0E19D3CFD100F6A9FD /* Sources */,
+				87E57A0F19D3CFD100F6A9FD /* Frameworks */,
+				87E57A1019D3CFD100F6A9FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KOKOIKE;
+			productName = KOKOIKE;
+			productReference = 87E57A1219D3CFD100F6A9FD /* KOKOIKE.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87E57A2A19D3CFD100F6A9FD /* KOKOIKETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87E57A3819D3CFD100F6A9FD /* Build configuration list for PBXNativeTarget "KOKOIKETests" */;
+			buildPhases = (
+				87E57A2719D3CFD100F6A9FD /* Sources */,
+				87E57A2819D3CFD100F6A9FD /* Frameworks */,
+				87E57A2919D3CFD100F6A9FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87E57A2D19D3CFD100F6A9FD /* PBXTargetDependency */,
+			);
+			name = KOKOIKETests;
+			productName = KOKOIKETests;
+			productReference = 87E57A2B19D3CFD100F6A9FD /* KOKOIKETests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87E57A0A19D3CFD100F6A9FD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = mycompany;
+				TargetAttributes = {
+					87E57A1119D3CFD100F6A9FD = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					87E57A2A19D3CFD100F6A9FD = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = 87E57A1119D3CFD100F6A9FD;
+					};
+				};
+			};
+			buildConfigurationList = 87E57A0D19D3CFD100F6A9FD /* Build configuration list for PBXProject "KOKOIKE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 87E57A0919D3CFD100F6A9FD;
+			productRefGroup = 87E57A1319D3CFD100F6A9FD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87E57A1119D3CFD100F6A9FD /* KOKOIKE */,
+				87E57A2A19D3CFD100F6A9FD /* KOKOIKETests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		87E57A1019D3CFD100F6A9FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E57A2119D3CFD100F6A9FD /* Main.storyboard in Resources */,
+				87E57A2619D3CFD100F6A9FD /* LaunchScreen.xib in Resources */,
+				87E57A2319D3CFD100F6A9FD /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E57A2919D3CFD100F6A9FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87E57A0E19D3CFD100F6A9FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E57A1E19D3CFD100F6A9FD /* ViewController.m in Sources */,
+				87E57A1B19D3CFD100F6A9FD /* AppDelegate.m in Sources */,
+				87E57A1819D3CFD100F6A9FD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E57A2719D3CFD100F6A9FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E57A3219D3CFD100F6A9FD /* KOKOIKETests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87E57A2D19D3CFD100F6A9FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87E57A1119D3CFD100F6A9FD /* KOKOIKE */;
+			targetProxy = 87E57A2C19D3CFD100F6A9FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		87E57A1F19D3CFD100F6A9FD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87E57A2019D3CFD100F6A9FD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87E57A2519D3CFD100F6A9FD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		87E57A3319D3CFD100F6A9FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		87E57A3419D3CFD100F6A9FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87E57A3619D3CFD100F6A9FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = KOKOIKE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		87E57A3719D3CFD100F6A9FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = KOKOIKE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		87E57A3919D3CFD100F6A9FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KOKOIKETests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KOKOIKE.app/KOKOIKE";
+			};
+			name = Debug;
+		};
+		87E57A3A19D3CFD100F6A9FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KOKOIKETests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KOKOIKE.app/KOKOIKE";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87E57A0D19D3CFD100F6A9FD /* Build configuration list for PBXProject "KOKOIKE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E57A3319D3CFD100F6A9FD /* Debug */,
+				87E57A3419D3CFD100F6A9FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87E57A3519D3CFD100F6A9FD /* Build configuration list for PBXNativeTarget "KOKOIKE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E57A3619D3CFD100F6A9FD /* Debug */,
+				87E57A3719D3CFD100F6A9FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		87E57A3819D3CFD100F6A9FD /* Build configuration list for PBXNativeTarget "KOKOIKETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87E57A3919D3CFD100F6A9FD /* Debug */,
+				87E57A3A19D3CFD100F6A9FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87E57A0A19D3CFD100F6A9FD /* Project object */;
+}

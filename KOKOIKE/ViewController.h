@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-
+//移動手段を決めるための選択肢のプロパティ
+@property (weak, nonatomic) IBOutlet UIPickerView *movepicker;
+//予算を決めるための選択肢のプロパティ
+@property (weak, nonatomic) IBOutlet UIPickerView *moneypicker;
+- (IBAction)firstmove:(id)sender;
 
 @end
 

@@ -14,6 +14,7 @@
 		87E57A2319D3CFD100F6A9FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87E57A2219D3CFD100F6A9FD /* Images.xcassets */; };
 		87E57A2619D3CFD100F6A9FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */; };
 		87E57A3219D3CFD100F6A9FD /* KOKOIKETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */; };
+		87ED273D19D3DE3400B815CB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED273C19D3DE3400B815CB /* SecondViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		87E57A2B19D3CFD100F6A9FD /* KOKOIKETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KOKOIKETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E57A3019D3CFD100F6A9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKOIKETests.m; sourceTree = "<group>"; };
+		87ED273B19D3DE3400B815CB /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		87ED273C19D3DE3400B815CB /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				87E57A1C19D3CFD100F6A9FD /* ViewController.h */,
 				87E57A1D19D3CFD100F6A9FD /* ViewController.m */,
 				87E57A1F19D3CFD100F6A9FD /* Main.storyboard */,
+				87ED273B19D3DE3400B815CB /* SecondViewController.h */,
+				87ED273C19D3DE3400B815CB /* SecondViewController.m */,
 				87E57A2219D3CFD100F6A9FD /* Images.xcassets */,
 				87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */,
 				87E57A1519D3CFD100F6A9FD /* Supporting Files */,
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87ED273D19D3DE3400B815CB /* SecondViewController.m in Sources */,
 				87E57A1E19D3CFD100F6A9FD /* ViewController.m in Sources */,
 				87E57A1B19D3CFD100F6A9FD /* AppDelegate.m in Sources */,
 				87E57A1819D3CFD100F6A9FD /* main.m in Sources */,
@@ -412,6 +418,7 @@
 				87E57A3719D3CFD100F6A9FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87E57A3819D3CFD100F6A9FD /* Build configuration list for PBXNativeTarget "KOKOIKETests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				87E57A3A19D3CFD100F6A9FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

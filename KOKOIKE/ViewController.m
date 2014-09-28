@@ -27,8 +27,6 @@
     //デリゲートとデータソースを自分自身に設定
     self.movepicker.delegate = self;
     self.movepicker.dataSource = self;
-    self.moneypicker.delegate = self;
-    self.moneypicker.delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -46,33 +44,30 @@
 //ピッカーに表示する行数を設定するためのメソッド
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
    
-    if (pickerView == self.movepicker) {
          //1列目をmoveの要素分表示するように設定
         return [move count];
-    } else{
-        //2列目をmoneyの要素分表示するように設定
-        return [money count];
-    }
+    
 }
 
 //ピッカーに表示する内容を設定するためのメソッド
 //引数rowに行番号、componentに列番号が渡されている
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    if (pickerView == self.movepicker) {
-        //1列目にmoveの要素を表示するように設定
         return [move objectAtIndex:row];
-    } else {
-        //2列目にmoneyの要素を表示させるように設定
-        return [money objectAtIndex:row];
-    }
+
 }
+
+//ボタンをおしたときに呼ばれるメソッド
 - (IBAction)firstmove:(id)sender {
+    //名前がfirstsegueであるセグエを実行
     [self performSegueWithIdentifier:@"firstsegue" sender:self];
 }
 
+
+//セグエ(画面遷移)が実行される前によばれるメソッド
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    //画面遷移されるビューの情報を格納
     SecondViewController *sec = segue.destinationViewController;
+    //プロパティmoveにmovepickerで選ばれた文字列を格納
     sec.move = [move objectAtIndex:[self.movepicker selectedRowInComponent:0]];
-    sec.money = [money objectAtIndex:[self.moneypicker selectedRowInComponent:0]];
 }
 @end

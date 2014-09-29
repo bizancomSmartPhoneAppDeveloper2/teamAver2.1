@@ -98,12 +98,12 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     //最近の位置情報を取得
     CLLocation *location = [locations lastObject];
-    //最近の緯度を取得
-    nowlocation.latitude = location.coordinate.latitude;
-    //最近の経度を取得
-    nowlocation.longitude = location.coordinate.longitude;
     //startがYESであるか
     if (start) {
+        //最近の緯度を取得
+        nowlocation.latitude = location.coordinate.latitude;
+        //最近の経度を取得
+        nowlocation.longitude = location.coordinate.longitude;
         //setupメソッドを呼ぶ
         [self setup];
         start = NO;

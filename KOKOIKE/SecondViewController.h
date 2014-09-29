@@ -21,11 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 //マップ
 @property (weak, nonatomic) IBOutlet MKMapView *map;
-//レストランの名前を表示するラベル
-@property (weak, nonatomic) IBOutlet UILabel *resname;
 //戻るボタンを押したときによばれるメソッド
 - (IBAction)back:(id)sender;
 //戻るボタン
 @property (weak, nonatomic) IBOutlet UIButton *backbutton;
+
 
 @end

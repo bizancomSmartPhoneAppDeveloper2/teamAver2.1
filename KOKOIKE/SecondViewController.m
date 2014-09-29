@@ -45,24 +45,11 @@
 @implementation SecondViewController
 
 - (void)viewDidLoad {
+    
     //戻るボタンを非表示
     self.backbutton.hidden = YES;
-    //レストランの名前を表示ラベルを非表示
-    self.resname.hidden = YES;
     start = YES;
-    //moveの値が徒歩であるか
-    if ([self.move isEqualToString:@"徒歩"]) {
-        //距離の範囲0.8KMとする
-        choicedis = 0.8;
-        //moveの値が自転車であるか
-    }else if([self.move isEqualToString:@"自転車"]){
-        //距離の範囲2KMとする
-        choicedis = 2;
-        //moveの値が車である場合の処理
-    }else{
-        //距離の範囲4KMとする
-        choicedis = 4;
-    }
+    choicedis = 0.8;
     //mapを非表示にする
     self.map.hidden = YES;
     //配列を初期化
@@ -120,8 +107,6 @@
         //setupメソッドを呼ぶ
         [self setup];
         start = NO;
-        //GPSを止める
-        [manager stopUpdatingLocation];
     }
 }
 
@@ -290,6 +275,15 @@
 
 //町の情報をもとにレストランの情報を取得するためのメソッド
 -(void)reschoice{
+    //曜日のディクショナリを生成
+    NSDictionary *weekdic = [NSDictionary dictionaryWithObjectsAndKeys:@"日曜日",@"Sunday", @"月曜日",@"Monday",@"火曜日",@"Tuesday",@"水曜日",@"Wednesday",@"木曜日",@"Thursday",@"金曜日",@"Friday",@"土曜日",@"Saturday",nil];
+    //日付フォーマットオブジェクト生成
+    NSDateFormatter *dateformattter = [[NSDateFormatter alloc]init];
+    //フォーマットを曜日が表示するように設定
+    [dateformattter setDateFormat:@"EEEE"];
+    //現在の曜日の文字列を格納
+    NSString *nowday = [weekdic objectForKey:[dateformattter stringFromDate:[NSDate date]]];
+    
     //現在の経度の文字列を格納
     NSString *keido = [NSString stringWithFormat:@"%f",nowlocation.longitude];
     //現在の緯度の文字列を格納
@@ -325,10 +319,18 @@
                 for (int n = 0; n < [tmparray count]; n++) {
                     //n番目のデータを格納
                     NSDictionary *tmpdic = [tmparray objectAtIndex:n];
+                    //現在の緯度と経度からレストランの緯度と経度までの距離
+                    float dis = [self distance:keido latitude:ido longitude:[tmpdic objectForKey:@"east_longitude"] newlatitude:[tmpdic objectForKey:@"north_latitude"]];
+                    //休日に関する情報の文字列を取得
+                    NSString *closeday = [[tmpdic objectForKey:@"closeday"] objectForKey:@"days"];
+                    //closedayの中にnowdayの文字列が含むかどうか調べる変数
+                    //closedayの中にnowdayが含まれいない場合、search.locationにNSNotFoundを返す
+                    NSRange search = [closeday rangeOfString:nowday];
+                    
                     //現在の緯度と経度からレストランの緯度と経度までの距離が指定距離より低いか
-                    if (choicedis > [self distance:keido latitude:ido longitude:[tmpdic objectForKey:@"east_longitude"] newlatitude:[tmpdic objectForKey:@"north_latitude"]]) {
+                    if ((choicedis > dis) && (search.location == NSNotFound)) {
                         //resarrayに追加する配列を生成
-                        NSArray *addarray = [NSArray arrayWithObjects:[tmpdic objectForKey:@"name"],[tmpdic objectForKey:@"east_longitude"],[tmpdic objectForKey:@"north_latitude"], nil];
+                        NSArray *addarray = [NSArray arrayWithObjects:[tmpdic objectForKey:@"name"],[tmpdic objectForKey:@"east_longitude"],[tmpdic objectForKey:@"north_latitude"], [[tmpdic objectForKey:@"category"] objectForKey:@"name"],[tmpdic objectForKey:@"tel"],nil];
                         /*
                         NSLog(@"%@",[addarray objectAtIndex:0]);
                         NSLog(@"%@",[addarray objectAtIndex:1]);
@@ -367,8 +369,6 @@
             if ([resarray count] > 0) {
                 //現在地を青丸で表示する
                 self.map.showsUserLocation = YES;
-                //お待ちくださいからここにいけという文字列に変更
-                self.label.text = @"ここにいけ";
                 //mapを表示する
                 self.map.hidden = NO;
                 //メソッドresanotetionを実行
@@ -376,6 +376,8 @@
                 //GPSを起動
                 [manager startUpdatingLocation];
             }else{
+                //GPSを止める
+                [manager stopUpdatingLocation];
                 //お待ちくださいからここにいけという文字列に変更
                 self.label.text = @"再設定してください";
                 //戻るボタンを表示
@@ -407,7 +409,7 @@
     }
 }
 
-//レストランにアノテーションを示すメソッド
+//レストランのアノテーション追加するためのメソッド
 -(void)resanotetion{
     //現在の経度の文字列を格納
     NSString *keido = [NSString stringWithFormat:@"%f",nowlocation.longitude];
@@ -415,10 +417,9 @@
     NSString *ido = [NSString stringWithFormat:@"%f",nowlocation.latitude];
     //resarrayの中にある配列からランダム中質
     NSArray *choicearray = [resarray objectAtIndex:arc4random()%[resarray count]];
-    //レストランの名前を格納
-    self.resname.text = [choicearray objectAtIndex:0];
-    //ラベルを表示
-    self.resname.hidden = NO;
+    
+    //レストランのジャンルの名前を格納
+    NSString *janl = [[@"(" stringByAppendingString:[choicearray objectAtIndex:3]] stringByAppendingString:@")"];
         //現在の経度と緯度から指定されたレストランの経度と緯度の距離を格納
     float dis = [self distance:keido latitude:ido longitude:[choicearray objectAtIndex:1] newlatitude:[choicearray objectAtIndex:2]];
     //緯度と経度情報を格納する変数の初期化
@@ -435,11 +436,17 @@
     region.center.latitude = (nowlocation.latitude + co.latitude)/2;
     //1度を約111.2kmとする
     //現在地から店の距離によってマップの縮尺度を設定
-    region.span.latitudeDelta = dis / 111.2;
-    region.span.longitudeDelta = dis / 111.2;
+    region.span.latitudeDelta = (dis + 0.1) / 111.2;
+    region.span.longitudeDelta = (dis + 0.1) / 111.2;
     [self.map setRegion:region];
     //アノテーションを初期化
     anotetion = [[Anotetion alloc] initwithCoordinate:co];
+    //アノテーションのタイトルを店の名前にする
+    anotetion.title = [[choicearray objectAtIndex:0]stringByAppendingString:janl];
+    //アノテーションのサブタイトルを電話番号にする
+    anotetion.subtitle = [choicearray objectAtIndex:4];
+    self.label.text = [@"今すぐに" stringByAppendingString:[[choicearray objectAtIndex:0]stringByAppendingString:janl]];
+    self.label.text = [self.label.text stringByAppendingString:@"に行け"];
     //マップにアノテーションを追加
     [self.map addAnnotation:anotetion];
 }
@@ -448,5 +455,11 @@
 - (IBAction)back:(id)sender {
     //遷移前の画面に戻る
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//GPSが起動できないときによばれるメソッド
+-(void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error{
+    NSLog(@"GPS起動しません");
+    self.label.text = @"GPS起動しません";
 }
 @end

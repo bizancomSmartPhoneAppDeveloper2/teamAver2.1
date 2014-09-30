@@ -235,6 +235,7 @@
         }
     }
     /*
+     大量の情報を取るためコメントアウト
     //townarrayの要素の数の繰り返しの処理を行う
     for (int i = 0; i < [townarray count]; i++) {
         //townarrayのi番目の要素を格納
@@ -298,7 +299,7 @@
 //町の情報をもとにレストランの情報を取得するためのメソッド
 -(void)reschoice{
     //曜日のディクショナリを生成
-    NSDictionary *weekdic = [NSDictionary dictionaryWithObjectsAndKeys:@"日曜日",@"Sunday", @"月曜日",@"Monday",@"火曜日",@"Tuesday",@"水曜日",@"Wednesday",@"木曜日",@"Thursday",@"金曜日",@"Friday",@"土曜日",@"Saturday",nil];
+    //NSDictionary *weekdic = [NSDictionary dictionaryWithObjectsAndKeys:@"日曜日",@"Sunday", @"月曜日",@"Monday",@"火曜日",@"Tuesday",@"水曜日",@"Wednesday",@"木曜日",@"Thursday",@"金曜日",@"Friday",@"土曜日",@"Saturday",nil];
     //日付フォーマットオブジェクト生成
     NSDateFormatter *dateformattter = [[NSDateFormatter alloc]init];
     //フォーマットを曜日が表示するように設定
@@ -470,8 +471,8 @@
     region.center.latitude = (nowlocation.latitude + reslocation.latitude)/2;
     //1度を約111.2kmとする
     //現在地から店の距離によってマップの縮尺度を設定
-    region.span.latitudeDelta = (dis + 0.1) / 111.2;
-    region.span.longitudeDelta = (dis + 0.1) / 111.2;
+    region.span.latitudeDelta = (dis + 0.15) / 111.2;
+    region.span.longitudeDelta = (dis + 0.15) / 111.2;
     [self.map setRegion:region];
     //アノテーションを初期化
     anotetion = [[Anotetion alloc] initwithCoordinate:reslocation];

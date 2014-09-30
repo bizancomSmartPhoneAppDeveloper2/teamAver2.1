@@ -417,6 +417,8 @@
                 NSLog(@"検索失敗");
                 //GPSを止める
                 [manager stopUpdatingLocation];
+                //検索失敗画面に移る
+                [self performSegueWithIdentifier:@"NotfoundSegue" sender:self];
                 //お待ちくださいからここにいけという文字列に変更
                 self.label.text = @"再設定してください";
             }

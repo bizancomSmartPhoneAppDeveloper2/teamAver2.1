@@ -399,8 +399,8 @@
             if ([resarray count] > 0) {
                 NSLog(@"検索成功");
                 //分と秒の初期設定
-                minute = 0;
-                seconds = 5;
+                minute = 1;
+                seconds = 0;
                 //現在地を青丸で表示する
                 self.map.showsUserLocation = YES;
                 //mapを表示する
@@ -481,8 +481,8 @@
     //アノテーションのサブタイトルを電話番号にする
     anotetion.subtitle = [choicearray objectAtIndex:4];
     //今すぐに(店名)に行けとラベルに表示
-    self.label.text = [@"今すぐに" stringByAppendingString:[[choicearray objectAtIndex:0]stringByAppendingString:janl]];
-    self.label.text = [self.label.text stringByAppendingString:@"に行け"];
+    self.label.text = [choicearray objectAtIndex:0];
+//    self.label.text = [self.label.text stringByAppendingString:@"に行け"];
     //マップにアノテーションを追加
     [self.map addAnnotation:anotetion];
 }

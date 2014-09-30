@@ -28,5 +28,4 @@
 //制限時間を表示するためのラベル
 @property (weak, nonatomic) IBOutlet UILabel *timelabel;
 
-
 @end

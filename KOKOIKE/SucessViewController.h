@@ -10,4 +10,7 @@
 
 @interface SucessViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *mcBack;
+@property (weak, nonatomic) IBOutlet UIImageView *mcSerifImage;
+
 @end

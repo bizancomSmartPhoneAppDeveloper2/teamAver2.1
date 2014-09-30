@@ -20,6 +20,7 @@
 		87E57A2619D3CFD100F6A9FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */; };
 		87E57A3219D3CFD100F6A9FD /* KOKOIKETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */; };
 		87ED273D19D3DE3400B815CB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED273C19D3DE3400B815CB /* SecondViewController.m */; };
+		F43B5DF319DA70C5004A05E8 /* trumpet1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F43B5DF219DA70C5004A05E8 /* trumpet1.mp3 */; };
 		F4C8DB0C19DA44F40096A4E0 /* kokoike.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB0B19DA44F40096A4E0 /* kokoike.wav */; };
 		F4C8DB0E19DA4A660096A4E0 /* siren1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB0D19DA4A660096A4E0 /* siren1.mp3 */; };
 		F4C8DB1119DA4B5E0096A4E0 /* FailViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C8DB1019DA4B5E0096A4E0 /* FailViewController2.m */; };
@@ -62,6 +63,7 @@
 		87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKOIKETests.m; sourceTree = "<group>"; };
 		87ED273B19D3DE3400B815CB /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		87ED273C19D3DE3400B815CB /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		F43B5DF219DA70C5004A05E8 /* trumpet1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trumpet1.mp3; sourceTree = "<group>"; };
 		F4C8DB0B19DA44F40096A4E0 /* kokoike.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kokoike.wav; sourceTree = "<group>"; };
 		F4C8DB0D19DA4A660096A4E0 /* siren1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = siren1.mp3; sourceTree = "<group>"; };
 		F4C8DB0F19DA4B5E0096A4E0 /* FailViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailViewController2.h; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				F4C8DB1219DA4FED0096A4E0 /* iphonedefault_an.mp3 */,
 				F4C8DB1319DA4FED0096A4E0 /* drum-roll1.mp3 */,
 				F4C8DB1619DA54F00096A4E0 /* se_maoudamashii_instruments_drumroll.mp3 */,
+				F43B5DF219DA70C5004A05E8 /* trumpet1.mp3 */,
 				87E57A1619D3CFD100F6A9FD /* Info.plist */,
 				F4C8DB0B19DA44F40096A4E0 /* kokoike.wav */,
 				F4C8DB0D19DA4A660096A4E0 /* siren1.mp3 */,
@@ -253,6 +256,7 @@
 				87E57A2119D3CFD100F6A9FD /* Main.storyboard in Resources */,
 				87E57A2619D3CFD100F6A9FD /* LaunchScreen.xib in Resources */,
 				F4C8DB0E19DA4A660096A4E0 /* siren1.mp3 in Resources */,
+				F43B5DF319DA70C5004A05E8 /* trumpet1.mp3 in Resources */,
 				87E57A2319D3CFD100F6A9FD /* Images.xcassets in Resources */,
 				F4C8DB1519DA4FED0096A4E0 /* drum-roll1.mp3 in Resources */,
 			);

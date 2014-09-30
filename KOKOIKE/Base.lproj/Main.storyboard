@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Ek-zJ-xxM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -209,6 +209,49 @@
             </objects>
             <point key="canvasLocation" x="1799" y="-724"/>
         </scene>
+        <!--Not Found View Controller-->
+        <scene sceneID="cMr-c6-1fg">
+            <objects>
+                <viewController id="5Ek-zJ-xxM" customClass="notFoundViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vr8-bB-60p"/>
+                        <viewControllerLayoutGuide type="bottom" id="aYE-b6-FIR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G9X-Vc-zDa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ntBack01" translatesAutoresizingMaskIntoConstraints="NO" id="W28-99-wDg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topChar01" translatesAutoresizingMaskIntoConstraints="NO" id="lCd-Q8-IfR">
+                                <rect key="frame" x="40" y="407" width="100" height="120"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4n-kp-EXD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn:" destination="5Ek-zJ-xxM" eventType="touchUpInside" id="TcY-WZ-zAw"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rqk-1t-lt1">
+                                <rect key="frame" x="53" y="290" width="241" height="145"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="ntBack" destination="W28-99-wDg" id="PNX-5P-mvS"/>
+                        <outlet property="ntSerifImage" destination="Rqk-1t-lt1" id="dbG-mI-cWa"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="notFoundToTop" animates="NO" id="pYu-Jy-jGS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4u-dO-Rn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="500" y="982"/>
+        </scene>
         <!--Sucess View Controller-->
         <scene sceneID="fFH-Nk-znS">
             <objects>
@@ -265,6 +308,7 @@
         <image name="cauBack01" width="640" height="1136"/>
         <image name="hackBack01" width="640" height="1136"/>
         <image name="mcFukidashi" width="454" height="283"/>
+        <image name="ntBack01" width="640" height="1136"/>
         <image name="svback" width="640" height="1136"/>
         <image name="topBack" width="640" height="1136"/>
         <image name="topBtn01" width="300" height="80"/>
@@ -277,6 +321,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="RSY-HE-4Wh"/>
+        <segue reference="pYu-Jy-jGS"/>
     </inferredMetricsTieBreakers>
 </document>

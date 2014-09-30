@@ -105,7 +105,7 @@
 
 //失敗画面2へ移動するメソッド
 -(void)toFV2{
-    [self performSegueWithIdentifier:@"firstsegue2" sender:self];
+    [self performSegueWithIdentifier:@"failsegue2" sender:self];
 }
 
 //画面全体がボタンになっている

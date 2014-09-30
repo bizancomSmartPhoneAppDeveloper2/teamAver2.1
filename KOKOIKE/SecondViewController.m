@@ -224,8 +224,9 @@
         if (choicedis >= [self distance:[choicearray objectAtIndex:1] latitude:[choicearray objectAtIndex:2] longitude:keido newlatitude:ido]) {
             //townarrayの末尾にchoicearrayを追加
             [townarray addObject:choicearray];
+            
+            NSLog(@"町追加(第1段階)");
             /*
-            NSLog(@"追加");
             NSLog(@"名前 %@",[choicearray objectAtIndex:0]);
             NSLog(@"経度 %@",[choicearray objectAtIndex:1]);
             NSLog(@"緯度 %@",[choicearray objectAtIndex:2]);
@@ -233,6 +234,7 @@
              */
         }
     }
+    /*
     //townarrayの要素の数の繰り返しの処理を行う
     for (int i = 0; i < [townarray count]; i++) {
         //townarrayのi番目の要素を格納
@@ -248,13 +250,14 @@
                 NSArray *array3 = [array2 objectAtIndex:k];
             //現在の緯度と経度とarray3の緯度と経度の距離がchoicedisより大きければkのループ処理が最初に戻る
                 if (choicedis < [self distance:[array3 objectAtIndex:1] latitude:[array3 objectAtIndex:2] longitude:keido newlatitude:ido]) {
-                    /*
-                    NSLog(@"追加されない(距離が大きい)");
+                    
+                    NSLog(@"町追加されない(距離が大きい)(第2段階)");
+     
                     NSLog(@"名前 %@",[array3 objectAtIndex:0]);
                     NSLog(@"経度 %@",[array3 objectAtIndex:1]);
                     NSLog(@"緯度 %@",[array3 objectAtIndex:2]);
                     NSLog(@"距離　%f",[self distance:[array3 objectAtIndex:1] latitude:[array3 objectAtIndex:2] longitude:keido newlatitude:ido]);
-                     */
+     
                     continue;
                 }
             //townarrayに要素を追加するかどうか判定するためのBOOL変数
@@ -263,12 +266,13 @@
             for (int n = 0; n < [townarray count]; n++) {
                 //array3とtownarrayのn番目の要素が同じ配列であるか
                 if ([array3 isEqualToArray:[townarray objectAtIndex:n]]) {
-                    /*
-                    NSLog(@"追加されない(かぶっている)");
+                    
+                    NSLog(@"追加されない(かぶっている)(第2段階)");
+
                     NSLog(@"名前 %@",[array3 objectAtIndex:0]);
                     NSLog(@"経度 %@",[array3 objectAtIndex:1]);
                     NSLog(@"緯度 %@",[array3 objectAtIndex:2]);
-                     */
+                     
                     //addをfalseにして繰り返し処理をやめる
                     add = false;
                     break;
@@ -278,16 +282,17 @@
             if (add) {
                 //townarrayの末尾にarray3を追加する
                 [townarray addObject:array3];
-                /*
-                    NSLog(@"追加");
+                
+                    NSLog(@"町追加(第2段階)");
                     NSLog(@"名前 %@",[array3 objectAtIndex:0]);
                     NSLog(@"経度 %@",[array3 objectAtIndex:1]);
                     NSLog(@"緯度 %@",[array3 objectAtIndex:2]);
-                 */
+                 
                 }
             
             }
     }
+*/
 }
 
 //町の情報をもとにレストランの情報を取得するためのメソッド
@@ -299,7 +304,7 @@
     //フォーマットを曜日が表示するように設定
     [dateformattter setDateFormat:@"EEEE"];
     //現在の曜日の文字列を格納
-    NSString *nowday = [weekdic objectForKey:[dateformattter stringFromDate:[NSDate date]]];
+    //NSString *nowday = [weekdic objectForKey:[dateformattter stringFromDate:[NSDate date]]];
     
     //現在の経度の文字列を格納
     NSString *keido = [NSString stringWithFormat:@"%f",nowlocation.longitude];
@@ -317,6 +322,7 @@
         NSDictionary *dic = [self JSONData:addurl];
         //検索結果があるかどうか
         if ([[dic objectForKey:@"total_entries"] length] > 0) {
+            NSLog(@"レストラン検索あり");
             //検索結果の数を格納
             int total = [[dic objectForKey:@"total_entries"] intValue];
             //結果で表示される最後のページ数の変数を生成
@@ -326,6 +332,7 @@
             }
             //pageの数の繰り返し処理を行う
             for (int k = 1; k <= page; k++) {
+                NSLog(@"%dページ目の処理",k);
                 //k番目のページのレストランの情報を取得するためのURLの文字列を生成
                 NSString *pageurl = [addurl stringByAppendingString:[NSString stringWithFormat:@"&page=%d",k]];
                 //pageurlのJSONオブジェクトを格納
@@ -339,13 +346,15 @@
                     //現在の緯度と経度からレストランの緯度と経度までの距離
                     float dis = [self distance:keido latitude:ido longitude:[tmpdic objectForKey:@"east_longitude"] newlatitude:[tmpdic objectForKey:@"north_latitude"]];
                     //休日に関する情報の文字列を取得
-                    NSString *closeday = [[tmpdic objectForKey:@"closeday"] objectForKey:@"days"];
+                    //NSString *closeday = [[tmpdic objectForKey:@"closeday"] objectForKey:@"days"];
                     //closedayの中にnowdayの文字列が含むかどうか調べる変数
                     //closedayの中にnowdayが含まれいない場合、search.locationにNSNotFoundを返す
-                    NSRange search = [closeday rangeOfString:nowday];
+                    /*
+                    NSRange search = [closeday rangeOfString:nowday options:NSAnchoredSearch range:NSMakeRange(0, [closeday length]) locale:nil];
+                     */
                     
                     //現在の緯度と経度からレストランの緯度と経度までの距離が指定距離より低いか
-                    if ((choicedis > dis) && (search.location == NSNotFound)) {
+                    if (choicedis > dis) {
                         //resarrayに追加する配列を生成
                         NSArray *addarray = [NSArray arrayWithObjects:[tmpdic objectForKey:@"name"],[tmpdic objectForKey:@"east_longitude"],[tmpdic objectForKey:@"north_latitude"], [[tmpdic objectForKey:@"category"] objectForKey:@"name"],[tmpdic objectForKey:@"tel"],nil];
                         /*
@@ -355,6 +364,7 @@
                         NSLog(@"%f",[self distance:keido latitude:ido longitude:[addarray objectAtIndex:1] newlatitude:[addarray objectAtIndex:2]]);
                          */
                         //resarrayの末尾にaddarrayを追加
+                        NSLog(@"resarrayの要素を追加");
                         [resarray addObject:addarray];
                     }
                 }
@@ -372,11 +382,13 @@
     //インジケーターのアニメーション開始
     [self.activity startAnimating];
     dispatch_async(globalqueue, ^{
+        NSLog(@"バック処理開始");
         //バックグラウンド処理
         //メソッドtownchoiceとreschoiceを実行
         [self townchoice];
         [self reschoice];
         dispatch_async(mainqueue, ^{
+            NSLog(@"メイン処理");
             //メイン処理
             //インジケーターのアニメーション停止
             [self.activity stopAnimating];
@@ -384,6 +396,7 @@
             self.activity.hidesWhenStopped = YES;
             //resarrayの要素があるかどうか
             if ([resarray count] > 0) {
+                NSLog(@"検索成功");
                 //分と秒の初期設定
                 minute = 1;
                 seconds = 0;
@@ -398,6 +411,7 @@
                 //GPSを起動
                 [manager startUpdatingLocation];
             }else{
+                NSLog(@"検索失敗");
                 //GPSを止める
                 [manager stopUpdatingLocation];
                 //お待ちくださいからここにいけという文字列に変更

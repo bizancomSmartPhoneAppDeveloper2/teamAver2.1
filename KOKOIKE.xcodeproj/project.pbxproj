@@ -25,6 +25,7 @@
 		F4C8DB1119DA4B5E0096A4E0 /* FailViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C8DB1019DA4B5E0096A4E0 /* FailViewController2.m */; };
 		F4C8DB1419DA4FED0096A4E0 /* iphonedefault_an.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB1219DA4FED0096A4E0 /* iphonedefault_an.mp3 */; };
 		F4C8DB1519DA4FED0096A4E0 /* drum-roll1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB1319DA4FED0096A4E0 /* drum-roll1.mp3 */; };
+		F4C8DB1719DA54F00096A4E0 /* se_maoudamashii_instruments_drumroll.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB1619DA54F00096A4E0 /* se_maoudamashii_instruments_drumroll.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		F4C8DB1019DA4B5E0096A4E0 /* FailViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailViewController2.m; sourceTree = "<group>"; };
 		F4C8DB1219DA4FED0096A4E0 /* iphonedefault_an.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = iphonedefault_an.mp3; sourceTree = "<group>"; };
 		F4C8DB1319DA4FED0096A4E0 /* drum-roll1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "drum-roll1.mp3"; sourceTree = "<group>"; };
+		F4C8DB1619DA54F00096A4E0 /* se_maoudamashii_instruments_drumroll.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_maoudamashii_instruments_drumroll.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			children = (
 				F4C8DB1219DA4FED0096A4E0 /* iphonedefault_an.mp3 */,
 				F4C8DB1319DA4FED0096A4E0 /* drum-roll1.mp3 */,
+				F4C8DB1619DA54F00096A4E0 /* se_maoudamashii_instruments_drumroll.mp3 */,
 				87E57A1619D3CFD100F6A9FD /* Info.plist */,
 				F4C8DB0B19DA44F40096A4E0 /* kokoike.wav */,
 				F4C8DB0D19DA4A660096A4E0 /* siren1.mp3 */,
@@ -246,6 +249,7 @@
 			files = (
 				F4C8DB1419DA4FED0096A4E0 /* iphonedefault_an.mp3 in Resources */,
 				F4C8DB0C19DA44F40096A4E0 /* kokoike.wav in Resources */,
+				F4C8DB1719DA54F00096A4E0 /* se_maoudamashii_instruments_drumroll.mp3 in Resources */,
 				87E57A2119D3CFD100F6A9FD /* Main.storyboard in Resources */,
 				87E57A2619D3CFD100F6A9FD /* LaunchScreen.xib in Resources */,
 				F4C8DB0E19DA4A660096A4E0 /* siren1.mp3 in Resources */,

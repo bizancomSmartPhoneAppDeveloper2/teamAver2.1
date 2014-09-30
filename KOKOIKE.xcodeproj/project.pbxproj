@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8709A5B819D81CAF001E4E1D /* Anotetion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709A5B719D81CAF001E4E1D /* Anotetion.m */; };
+		871F158319D96BD000D95AC4 /* FailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871F158219D96BD000D95AC4 /* FailViewController.m */; };
+		871F158619D9760800D95AC4 /* SucessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 871F158519D9760800D95AC4 /* SucessViewController.m */; };
 		8772BD7619D6BF4200BA2F54 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8772BD7519D6BF4200BA2F54 /* CoreLocation.framework */; };
 		8772BD7819D6BF4D00BA2F54 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8772BD7719D6BF4D00BA2F54 /* MapKit.framework */; };
 		87E57A1819D3CFD100F6A9FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E57A1719D3CFD100F6A9FD /* main.m */; };
@@ -33,6 +35,10 @@
 /* Begin PBXFileReference section */
 		8709A5B619D81CAF001E4E1D /* Anotetion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anotetion.h; sourceTree = "<group>"; };
 		8709A5B719D81CAF001E4E1D /* Anotetion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anotetion.m; sourceTree = "<group>"; };
+		871F158119D96BD000D95AC4 /* FailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailViewController.h; sourceTree = "<group>"; };
+		871F158219D96BD000D95AC4 /* FailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailViewController.m; sourceTree = "<group>"; };
+		871F158419D9760800D95AC4 /* SucessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SucessViewController.h; sourceTree = "<group>"; };
+		871F158519D9760800D95AC4 /* SucessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SucessViewController.m; sourceTree = "<group>"; };
 		8772BD7519D6BF4200BA2F54 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8772BD7719D6BF4D00BA2F54 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		87E57A1219D3CFD100F6A9FD /* KOKOIKE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KOKOIKE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,9 +106,13 @@
 				87E57A1C19D3CFD100F6A9FD /* ViewController.h */,
 				87E57A1D19D3CFD100F6A9FD /* ViewController.m */,
 				87E57A1F19D3CFD100F6A9FD /* Main.storyboard */,
+				871F158419D9760800D95AC4 /* SucessViewController.h */,
+				871F158519D9760800D95AC4 /* SucessViewController.m */,
 				8709A5B619D81CAF001E4E1D /* Anotetion.h */,
 				8709A5B719D81CAF001E4E1D /* Anotetion.m */,
 				87ED273B19D3DE3400B815CB /* SecondViewController.h */,
+				871F158119D96BD000D95AC4 /* FailViewController.h */,
+				871F158219D96BD000D95AC4 /* FailViewController.m */,
 				87ED273C19D3DE3400B815CB /* SecondViewController.m */,
 				87E57A2219D3CFD100F6A9FD /* Images.xcassets */,
 				87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */,
@@ -238,7 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				87ED273D19D3DE3400B815CB /* SecondViewController.m in Sources */,
+				871F158619D9760800D95AC4 /* SucessViewController.m in Sources */,
 				87E57A1E19D3CFD100F6A9FD /* ViewController.m in Sources */,
+				871F158319D96BD000D95AC4 /* FailViewController.m in Sources */,
 				8709A5B819D81CAF001E4E1D /* Anotetion.m in Sources */,
 				87E57A1B19D3CFD100F6A9FD /* AppDelegate.m in Sources */,
 				87E57A1819D3CFD100F6A9FD /* main.m in Sources */,

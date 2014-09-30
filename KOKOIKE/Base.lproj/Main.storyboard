@@ -83,6 +83,12 @@
                                     <action selector="back:" destination="abc-Sp-vhg" eventType="touchUpInside" id="2dv-2a-y9m"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuG-0U-9P3">
+                                <rect key="frame" x="68" y="37" width="184" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -92,11 +98,68 @@
                         <outlet property="backbutton" destination="dpa-3g-3Pm" id="VZc-Ek-Tdn"/>
                         <outlet property="label" destination="Uwq-Lw-FM2" id="Fkq-Ha-tu5"/>
                         <outlet property="map" destination="m6l-98-jsu" id="NMJ-L0-Rph"/>
+                        <outlet property="timelabel" destination="WuG-0U-9P3" id="xwt-RY-xnY"/>
+                        <segue destination="GyG-A3-J0X" kind="modal" identifier="failsegue" id="OzL-ki-l4H"/>
+                        <segue destination="zTA-aT-I3o" kind="modal" identifier="sucesssegue" id="vjI-xB-GuB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19z-wb-FLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="753" y="264"/>
+        </scene>
+        <!--Fail View Controller-->
+        <scene sceneID="ytt-uM-q0l">
+            <objects>
+                <viewController id="GyG-A3-J0X" customClass="FailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qdg-QO-xA2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Dxk-S4-Zz9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2VV-HR-IdY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="失敗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2h-fz-XuD">
+                                <rect key="frame" x="139" y="154" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xhZ-A2-zoq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="-30"/>
+        </scene>
+        <!--Sucess View Controller-->
+        <scene sceneID="fFH-Nk-znS">
+            <objects>
+                <viewController id="zTA-aT-I3o" customClass="SucessViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="11s-8O-niP"/>
+                        <viewControllerLayoutGuide type="bottom" id="gnM-Ke-6LT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oSd-jx-RKX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="成功" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPM-dz-UEP">
+                                <rect key="frame" x="139" y="166" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xiq-xg-MA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="657"/>
         </scene>
     </scenes>
     <resources>

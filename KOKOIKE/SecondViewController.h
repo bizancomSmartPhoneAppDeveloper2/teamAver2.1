@@ -21,11 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 //マップ
 @property (weak, nonatomic) IBOutlet MKMapView *map;
-//戻るボタンを押したときによばれるメソッド
-- (IBAction)back:(id)sender;
-//戻るボタン
-@property (weak, nonatomic) IBOutlet UIButton *backbutton;
 //制限時間を表示するためのラベル
 @property (weak, nonatomic) IBOutlet UILabel *timelabel;
+//吹き出しの中に表示されるラベル
+@property (weak, nonatomic) IBOutlet UILabel *fukidashi;
 
 @end

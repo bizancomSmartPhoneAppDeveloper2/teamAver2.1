@@ -44,7 +44,8 @@
     int minute;
     //制限時間の秒を表す変数
     int seconds;
-    
+    //吹き出しの台詞を変えるために使うカウント変数
+    int count;
 }
 
 @end
@@ -52,9 +53,9 @@
 @implementation SecondViewController
 
 - (void)viewDidLoad {
-    
-    //戻るボタンを非表示
-    self.backbutton.hidden = YES;
+    //吹き出しラベルを非表示
+    self.fukidashi.hidden = YES;
+
     start = YES;
     choicedis = 0.8;
     //timelabelを非表示
@@ -401,6 +402,7 @@
                 //分と秒の初期設定
                 minute = 1;
                 seconds = 0;
+                count = 0;
                 //現在地を青丸で表示する
                 self.map.showsUserLocation = YES;
                 //mapを表示する
@@ -417,8 +419,6 @@
                 [manager stopUpdatingLocation];
                 //お待ちくださいからここにいけという文字列に変更
                 self.label.text = @"再設定してください";
-                //戻るボタンを表示
-                self.backbutton.hidden = NO;
             }
         });
     });
@@ -487,11 +487,6 @@
     [self.map addAnnotation:anotetion];
 }
 
-//戻るボタンを押したときに呼ばれるメソッド
-- (IBAction)back:(id)sender {
-    //遷移前の画面に戻る
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 //GPSが起動できないときによばれるメソッド
 -(void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error{
@@ -501,6 +496,7 @@
 
 //カウントダウン用のメソッド
 -(void)countdown{
+    count++;
     //秒の数が0であるか
     if (seconds == 0) {
         //分の数をデクリメント
@@ -518,6 +514,15 @@
     }
     //timelabelに表示する文字列を設定
     self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
+    self.fukidashi.hidden = NO;
+    //countが3で割り切れるか
+    if (count % 3 == 0) {
+        if ([self.fukidashi.text isEqualToString:@"はよ行け!!!"]) {
+            self.fukidashi.text = @"すぐ行け!!!";
+        } else {
+            self.fukidashi.text = @"はよ行け!!!";
+        }
+    }
     
 }
 
@@ -530,6 +535,7 @@
         self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
         //timelabelを表示
         self.timelabel.hidden = NO;
+        self.fukidashi.text = @"すぐ行け!!!";
         //1秒ごとにメソッドcountdownを実行
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(countdown) userInfo:nil repeats:YES];
     }

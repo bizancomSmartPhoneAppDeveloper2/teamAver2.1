@@ -71,15 +71,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="m6l-98-jsu">
                                 <rect key="frame" x="0.0" y="224" width="320" height="344"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpa-3g-3Pm">
-                                <rect key="frame" x="149" y="269" width="30" height="30"/>
-                                <state key="normal" title="戻る">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="back:" destination="abc-Sp-vhg" eventType="touchUpInside" id="2dv-2a-y9m"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuG-0U-9P3">
                                 <rect key="frame" x="24" y="172" width="184" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="48"/>
@@ -92,13 +83,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="117-zW-qOn">
+                                <rect key="frame" x="104" y="111" width="104" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="activity" destination="nlV-YX-7AJ" id="KsD-Jv-d5r"/>
-                        <outlet property="backbutton" destination="dpa-3g-3Pm" id="VZc-Ek-Tdn"/>
+                        <outlet property="fukidashi" destination="117-zW-qOn" id="g0t-0u-oMX"/>
                         <outlet property="label" destination="Uwq-Lw-FM2" id="Fkq-Ha-tu5"/>
                         <outlet property="map" destination="m6l-98-jsu" id="NMJ-L0-Rph"/>
                         <outlet property="timelabel" destination="WuG-0U-9P3" id="xwt-RY-xnY"/>

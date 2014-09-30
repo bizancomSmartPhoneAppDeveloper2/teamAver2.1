@@ -31,7 +31,7 @@
     [self changeBack];
     [self soundDrum];
     //最初は画面全体のボタンを無効にしておく
-    _btnBack.enabled = NO;
+    self.btnBack.enabled = NO;
     
     //フェイクアクション用の配列
     imageNames = [NSArray arrayWithObjects:

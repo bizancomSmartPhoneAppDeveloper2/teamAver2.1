@@ -7,9 +7,12 @@
 //
 
 #import "notFoundViewController.h"
+//音源用のフレームワーク2つインポート
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface notFoundViewController ()
-
+@property AVAudioPlayer *mySound;
 @end
 
 @implementation notFoundViewController
@@ -57,7 +60,31 @@
     [self performSegueWithIdentifier:@"notFoundToTop" sender:self];
 }
 
+//「ココイケ」と発音するメソッド
+-(void)sayKokoike{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"kokoike"ofType:@"wav"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    self.mySound = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:NULL];
+    [self.mySound play];
+}
+
+//画面全体がボタンです
 - (IBAction)backBtn:(UIButton *)sender {
+    // アニメーション用画像を配列（imageList）にセット
+    NSMutableArray *imageList = [NSMutableArray array];
+    for (NSInteger i = 1; i <= 7; i++) {
+        NSString *imagePath = [NSString stringWithFormat:@"topChar%02ld.png", (long)i];
+        UIImage *img = [UIImage imageNamed:imagePath];
+        [imageList addObject:img];
+    }
+    self.charView.animationImages = imageList;
+    self.charView.animationDuration = 0.3;// アニメーションの間隔
+    self.charView.animationRepeatCount = 1;// ?回リピート 0なら永続
+    self.charView.image = [UIImage imageNamed:@"topChar07"];
+    // Sart Animating!
+    [self.charView startAnimating];
+    
+    [self performSelector:@selector(sayKokoike) withObject:nil afterDelay:2];
     [self performSelector:@selector(backTop) withObject:nil afterDelay:3];
 }
 

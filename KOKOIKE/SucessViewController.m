@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     //ラベルを非表示
     self.label.hidden = YES;
+    //最初は画面全体のボタンを無効にしておく
+    self.backBtn.enabled = NO;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self changeBack];
@@ -84,7 +86,30 @@
 
 //画面全体がボタンです
 - (IBAction)backBtn:(UIButton *)sender {
-    [self performSelector:@selector(startGPS) withObject:nil afterDelay:1.2];
+    // アニメーション用画像を配列（imageList）にセット
+    NSMutableArray *imageList = [NSMutableArray array];
+    for (NSInteger i = 1; i <= 7; i++) {
+        NSString *imagePath = [NSString stringWithFormat:@"topChar%02ld.png", (long)i];
+        UIImage *img = [UIImage imageNamed:imagePath];
+        [imageList addObject:img];
+    }
+    self.charView.animationImages = imageList;
+    self.charView.animationDuration = 0.3;// アニメーションの間隔
+    self.charView.animationRepeatCount = 1;// ?回リピート 0なら永続
+    self.charView.image = [UIImage imageNamed:@"topChar07"];
+    // Sart Animating!
+    [self.charView startAnimating];
+    
+    [self performSelector:@selector(sayKokoike) withObject:nil afterDelay:2];
+    [self performSelector:@selector(startGPS) withObject:nil afterDelay:3];
+}
+
+//「ココイケ」と発音するメソッド
+-(void)sayKokoike{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"kokoike"ofType:@"wav"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    self.mySound = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:NULL];
+    [self.mySound play];
 }
 
 //2番目の台詞を表示するメソッド
@@ -96,8 +121,11 @@
 //豆知識の台詞を表示するメソッド
 -(void)trivia{
     //豆知識の文字列を格納している配列
-    NSArray *array = [NSArray arrayWithObjects:@"エッフェル塔は\n温度差の関係で夏と冬では\n高さが15センチも違うらしいぜ！",@"「夏が来れば思い出す～」の曲に\n出てくるので有名なミズバショウ。\n食べたら死ぬらしいぜ！", @"ボーリング場の貸し靴が\nセンスのかけらもない色をしているのは\n盗難防止のためらしいぜ！",@"ハンガリー語で塩が足りない事を\n「シオタラン」と言うらしいぜ！",@"恐怖のため落ち着かない\n様子を表す言葉は\n「ろりろり」らしいぜ！",@"バドミントンの審判の判定には\n「よく見えませんでした」\nというものがあるらしいぜ！",@"訓読みの「訓」は\n音読みなんだぜ！",@"アラビア語で「お父さん」\nを呼ぶ時に使う言葉は\n「ヤバイ」と言うらしいぜ！",@"「あれ!?」などの驚きの\n言葉をドイツ語で言うと\n「ナヌッ」と言うらしいぜ！",@"ジンジャーエールを冷凍庫に\n90分入れフタを開けると\n一気に凍りだすらしいぜ！",@"タツノオトシゴの仲間には\n「タツノイトコ」と「タツノハトコ」が\nいるらしいぜ！",@"英単語「nice」の元々の意味は\n「バカ」らしいぜ！",@"ライオンはボスが替わると\n元のボスの子供を\n全て殺すらしいぜ！",@"「微妙な三角関係」という言葉は\n韓国語でも「ビミョウナサンカクカンケイ」\nと言うらしいぜ！",@"タバコなどに含まれる\nニコチンは体内に入ると\nコチニンになるなるらしいぜ！",@"「ゴキブリ」はもともと「ゴキカブリ」だったが\n本の印刷ミスから\n「ゴキブリ」となったらしいぜ！",@"シャーペンの芯は\n電子レンジで加熱すると\n光るらしいぜ！",@"鉛筆を振った時ぐにゃぐにゃに見える\n現象の名前は「ラバー・ペンシル・イリュージョン」\nというらしいぜ！",@"中国の「ネイチャン」という町に\n流れている川の名前は\n「トオチャン」というらしいぜ！",@"ヒジがジーンとする\nあの場所の名前は「ファニーボーン」\nというらしいぜ！",nil];
+    NSArray *array = [NSArray arrayWithObjects:@"エッフェル塔は\n温度の関係で\n夏と冬では高さが\n15センチも違うらしいぜ！",@"「夏が来れば思い出す～」\nの曲に出てくるので\n有名なミズバショウは\n食べたら死ぬらしいぜ！", @"ボーリング場の貸し靴が\nセンスのかけらもない\n色をしているのは\n盗難防止のためらしいぜ！",@"ハンガリー語で\n塩が足りない事を\n「シオタラン」\nと言うらしいぜ！",@"恐怖のため\n落ち着かない様子を\n表す言葉は\n「ろりろり」らしいぜ！",@"バドミントンの\n審判の判定には\n「よく見えませんでした」\nてのがあるらしいぜ！",@"漢字には音読み、\n訓読みというものが\nあるが、訓読みの\n「訓」は音読みなんだぜ！",@"アラビア語で「お父さん」\nを呼ぶ時には「ヤバイ」\nと言うらしいぜ！",@"「あれ!?」などの驚きの\n言葉をドイツ語で言うと\n「ナヌッ」らしいぜ！",@"ジンジャーエールを\n冷凍庫に90分入れ\nフタを開けると\n一気に凍りだすらしいぜ！",@"タツノオトシゴの仲間には\n「タツノイトコ」と\n「タツノハトコ」が\nいるらしいぜ！",@"英単語「nice」の\n元々の意味は\n「バカ」らしいぜ！",@"ライオンはボスが替わると\n元のボスの子供を\n全て殺すらしいぜ！",@"「微妙な三角関係」\nという言葉は韓国語でも\n「ビミョウナサンカクカン\nケイ」らしいぜ！",@"タバコなどに含まれる\nニコチンは体内に入ると\nコチニンになるらしいぜ！",@"シャーペンの芯は\n電子レンジで加熱すると\n光るらしいぜ！",@"中国の「ネイチャン」と\nいう町には「トオチャン」\nという川が流れている\nらしいぜ！",@"ヒジがジーンとする\nあの場所の名前は\n「ファニーボーン」\nというらしいぜ！",nil];
     //ラベルにarrayの中の文字列をランダム表示
     self.label.text = [array objectAtIndex:arc4random()%[array count]];
+//    self.label.text = [array objectAtIndex:17];//確認用
+    //ボタンを有効にする
+    self.backBtn.enabled = YES;
 }
 @end

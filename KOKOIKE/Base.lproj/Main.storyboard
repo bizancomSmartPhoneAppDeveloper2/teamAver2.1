@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -24,6 +24,9 @@
                                 <state key="normal" image="topBtn02">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="zTA-aT-I3o" kind="modal" animates="NO" id="wy2-oS-RR0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B99-bE-abq">
                                 <rect key="frame" x="85" y="408" width="150" height="40"/>
@@ -69,10 +72,10 @@
                                 <rect key="frame" x="154" y="274" width="20" height="20"/>
                             </activityIndicatorView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="m6l-98-jsu">
-                                <rect key="frame" x="0.0" y="224" width="320" height="344"/>
+                                <rect key="frame" x="0.0" y="166" width="320" height="402"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuG-0U-9P3">
-                                <rect key="frame" x="24" y="172" width="184" height="38"/>
+                                <rect key="frame" x="21" y="116" width="184" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -83,12 +86,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="117-zW-qOn">
-                                <rect key="frame" x="104" y="111" width="104" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="117-zW-qOn">
+                                <rect key="frame" x="154" y="102" width="68" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="revChar" translatesAutoresizingMaskIntoConstraints="NO" id="d8d-gy-cvC">
+                                <rect key="frame" x="205" y="88" width="100" height="120"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -242,6 +248,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="charView" destination="lCd-Q8-IfR" id="OU5-fv-G3U"/>
                         <outlet property="ntBack" destination="W28-99-wDg" id="PNX-5P-mvS"/>
                         <outlet property="ntSerifImage" destination="Rqk-1t-lt1" id="dbG-mI-cWa"/>
                         <segue destination="vXZ-lx-hvc" kind="modal" identifier="notFoundToTop" animates="NO" id="pYu-Jy-jGS"/>
@@ -292,6 +299,8 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="backBtn" destination="5Me-wC-h9k" id="Cbu-Ha-iFR"/>
+                        <outlet property="charView" destination="ZAk-bI-ro1" id="ehU-wJ-xVQ"/>
                         <outlet property="label" destination="Kse-hx-Mql" id="crJ-B7-Pdf"/>
                         <outlet property="mcBack" destination="9y7-Xa-H94" id="CBT-EC-2Pm"/>
                         <outlet property="mcSerifImage" destination="TgO-5I-mEH" id="2Bo-LU-jkf"/>
@@ -308,6 +317,7 @@
         <image name="hackBack01" width="640" height="1136"/>
         <image name="mcFukidashi" width="454" height="283"/>
         <image name="ntBack01" width="640" height="1136"/>
+        <image name="revChar" width="200" height="240"/>
         <image name="svback" width="640" height="1136"/>
         <image name="topBack" width="640" height="1136"/>
         <image name="topBtn01" width="300" height="80"/>
@@ -321,5 +331,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="pYu-Jy-jGS"/>
+        <segue reference="wy2-oS-RR0"/>
     </inferredMetricsTieBreakers>
 </document>

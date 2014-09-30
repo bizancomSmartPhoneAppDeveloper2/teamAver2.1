@@ -18,21 +18,16 @@
 
 @end
 
-@implementation FailViewController{
-    NSTimer *timer;
-}
+@implementation FailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self changeBack];
-    [self siren];
-    timer = [NSTimer
-             scheduledTimerWithTimeInterval:3
-             target:self
-             selector:@selector(changeSerif)
-             userInfo:nil
-             repeats:NO];
+    //1.5秒後にサイレンが鳴り始める
+    [self performSelector:@selector(siren) withObject:nil afterDelay:1.5];
+    //2秒後にセリフが変わる
+    [self performSelector:@selector(changeSerif) withObject:nil afterDelay:2];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +70,7 @@
         [imageList addObject:img];
     }
     self.ctSerifImage.animationImages = imageList;
-    self.ctSerifImage.animationDuration = 10;
+    self.ctSerifImage.animationDuration = 7;
     self.ctSerifImage.animationRepeatCount = 0;
     // Sart Animating!
     [self.ctSerifImage startAnimating];
@@ -104,7 +99,7 @@
 
 //サイレンを鳴らすメソッド
 -(void)siren{
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"siren1"ofType:@"mp3"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"siren"ofType:@"mp3"];
     NSURL *url = [NSURL fileURLWithPath:path];
     self.alertSound = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:NULL];
     self.alertSound.numberOfLoops = -1; //-1で繰り返し鳴らす

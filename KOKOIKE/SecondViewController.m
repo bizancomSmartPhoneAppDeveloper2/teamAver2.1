@@ -8,6 +8,8 @@
 
 #import "SecondViewController.h"
 #import "Anotetion.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface SecondViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>{
     //GPSを起動するための変数
@@ -47,6 +49,9 @@
     //吹き出しの台詞を変えるために使うカウント変数
     int count;
 }
+
+//音源用のプロパティを準備
+@property AVAudioPlayer *voice;
 
 @end
 
@@ -513,16 +518,23 @@
     if ((minute == 0) && (seconds == 0)) {
         //失敗の画面に移る
         [self performSegueWithIdentifier:@"failsegue" sender:self];
+        
+        //ガキの使いっぽい音を鳴らす
+        NSString *path = [[NSBundle mainBundle]pathForResource:@"gaki"ofType:@"wav"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        self.voice = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:NULL];
+        [self.voice play];
     }
     //timelabelに表示する文字列を設定
     self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
     self.fukidashi.hidden = NO;
     //countが3で割り切れるか
-    if (count % 3 == 0) {
-        if ([self.fukidashi.text isEqualToString:@"はよ行け!!!"]) {
-            self.fukidashi.text = @"すぐ行け!!!";
+    if (count % 2 == 0) {
+        if ([self.fukidashi.text isEqualToString:@"はよ行け!"]) {
+            self.fukidashi.text = @"すぐ行け!";
         } else {
-            self.fukidashi.text = @"はよ行け!!!";
+            self.fukidashi.text = @"はよ行け!";
+            
         }
     }
     
@@ -537,7 +549,7 @@
         self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
         //timelabelを表示
         self.timelabel.hidden = NO;
-        self.fukidashi.text = @"すぐ行け!!!";
+        self.fukidashi.text = @"すぐ行け!";
         //1秒ごとにメソッドcountdownを実行
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(countdown) userInfo:nil repeats:YES];
     }

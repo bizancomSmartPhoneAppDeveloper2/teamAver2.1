@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ntBack;
 
 @property (weak, nonatomic) IBOutlet UIImageView *ntSerifImage;
+@property (weak, nonatomic) IBOutlet UIImageView *charView;
 @end

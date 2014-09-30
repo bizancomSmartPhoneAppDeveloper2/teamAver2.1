@@ -385,8 +385,8 @@
             //resarrayの要素があるかどうか
             if ([resarray count] > 0) {
                 //分と秒の初期設定
-                minute = 1;
-                seconds = 0;
+                minute = 0;
+                seconds = 5;
                 //現在地を青丸で表示する
                 self.map.showsUserLocation = YES;
                 //mapを表示する

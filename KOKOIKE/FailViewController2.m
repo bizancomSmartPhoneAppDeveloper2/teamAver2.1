@@ -107,7 +107,6 @@
 -(void)showNextImage: (NSTimer *)timer {
     if (index < length) {
         [self showImage:imageNames[index]];
-        //音を鳴らす
         //音がなる
         NSString *path = [[NSBundle mainBundle]pathForResource:@"iphonedefault_an"ofType:@"mp3"];
         NSURL *url = [NSURL fileURLWithPath:path];

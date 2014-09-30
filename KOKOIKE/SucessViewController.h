@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *mcBack;
 @property (weak, nonatomic) IBOutlet UIImageView *mcSerifImage;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

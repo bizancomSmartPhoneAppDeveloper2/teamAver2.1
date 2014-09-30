@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *movepicker;
 //ボタンを押したときに呼ばれるメソッド
 - (IBAction)firstmove:(id)sender;
-
+//キャラクター用のイメージビュー
+@property (weak, nonatomic) IBOutlet UIImageView *charaImg;
 @end
 

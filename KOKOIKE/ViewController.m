@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "SecondViewController.h"
+//音源用のフレームワーク2つインポート
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface ViewController (){
     //お金の選択肢の要素を決めるための配列
@@ -15,7 +18,8 @@
     //移動手段の要素を決めるための配列
     NSArray *move;
 }
-
+//音源用のプロパティを準備
+@property AVAudioPlayer *voice;
 @end
 
 @implementation ViewController
@@ -30,19 +34,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
 //ボタンをおしたときに呼ばれるメソッド
 - (IBAction)firstmove:(id)sender {
+    [self sayKokoike];
     [self niyari];
-    //名前がfirstsegueであるセグエを実行
-    [self performSegueWithIdentifier:@"firstsegue" sender:self];
+    [self performSelector:@selector(startGPS) withObject:nil afterDelay:1.2];
 }
-
 
 //セグエ(画面遷移)が実行される前によばれるメソッド
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+}
 
+//セグエを実行
+-(void)startGPS{
+    //名前がfirstsegueであるセグエを実行
+    [self performSegueWithIdentifier:@"firstsegue" sender:self];
 }
 
 //キャラクターがニヤリとするメソッド
@@ -60,4 +66,13 @@
     // Sart Animating!
     [self.charaImg startAnimating];
 }
+
+//「ココイケ」と発音するメソッド
+-(void)sayKokoike{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"kokoike"ofType:@"wav"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    self.voice = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:NULL];
+    [self.voice play];
+}
+
 @end

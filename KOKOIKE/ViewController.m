@@ -34,13 +34,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//ボタンをおしたときに呼ばれるメソッド
-- (IBAction)firstmove:(id)sender {
-    [self sayKokoike];
-    [self niyari];
-    [self performSelector:@selector(startGPS) withObject:nil afterDelay:1.2];
-}
-
 //セグエ(画面遷移)が実行される前によばれるメソッド
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 }
@@ -73,6 +66,13 @@
     NSURL *url = [NSURL fileURLWithPath:path];
     self.voice = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:NULL];
     [self.voice play];
+}
+
+//ボタンをおしたときに呼ばれるメソッド
+- (IBAction)firstmove:(id)sender {
+    [self sayKokoike];
+    [self niyari];
+    [self performSelector:@selector(startGPS) withObject:nil afterDelay:1.2];
 }
 
 @end

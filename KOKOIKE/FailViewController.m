@@ -14,6 +14,8 @@
 @interface FailViewController ()
 //音源用のプロパティを宣言
 @property AVAudioPlayer *alertSound;
+
+
 @end
 
 @implementation FailViewController{
@@ -22,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
     [self changeBack];
     [self siren];
     timer = [NSTimer
@@ -30,7 +33,6 @@
              selector:@selector(changeSerif)
              userInfo:nil
              repeats:NO];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,6 +96,12 @@
     [self.ctEffectImage startAnimating];
 }
 
+//失敗画面2へ移動するメソッド
+-(void)toFV2{
+    [self performSegueWithIdentifier:@"failsegue2" sender:self];
+    [self.alertSound stop];
+}
+
 //サイレンを鳴らすメソッド
 -(void)siren{
     NSString *path = [[NSBundle mainBundle]pathForResource:@"siren1"ofType:@"mp3"];
@@ -103,15 +111,10 @@
     [self.alertSound play];
 }
 
-//失敗画面2へ移動するメソッド
--(void)toFV2{
-    [self performSegueWithIdentifier:@"failsegue2" sender:self];
-}
-
 //画面全体がボタンになっている
 - (IBAction)btnBack:(UIButton *)sender {
     [self penaEffect];
     [self performSelector:@selector(toFV2) withObject:nil afterDelay:3];
-
 }
+
 @end

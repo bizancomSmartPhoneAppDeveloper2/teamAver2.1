@@ -129,7 +129,6 @@
                                 </state>
                                 <connections>
                                     <action selector="btnBack:" destination="GyG-A3-J0X" eventType="touchUpInside" id="Xdj-5A-e37"/>
-                                    <segue destination="eCV-be-c59" kind="modal" identifier="failsegue2" animates="NO" id="X5u-jK-AGj"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topChar01" translatesAutoresizingMaskIntoConstraints="NO" id="7cJ-yK-SFk">
@@ -149,11 +148,12 @@
                         <outlet property="ctBack" destination="F3S-Lx-JkK" id="dH4-7P-Z4T"/>
                         <outlet property="ctEffectImage" destination="B22-Nr-GDD" id="qyu-bg-MF1"/>
                         <outlet property="ctSerifImage" destination="6rd-X3-YPu" id="WlM-Tq-k8Z"/>
+                        <segue destination="eCV-be-c59" kind="modal" identifier="failsegue2" animates="NO" id="cvs-qg-JRl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhZ-A2-zoq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="-30"/>
+            <point key="canvasLocation" x="1396" y="-138"/>
         </scene>
         <!--Fail View Controller2-->
         <scene sceneID="oAE-0h-y4j">
@@ -177,7 +177,6 @@
                                 </state>
                                 <connections>
                                     <action selector="btnBack:" destination="eCV-be-c59" eventType="touchUpInside" id="MV6-tO-Vqi"/>
-                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="fv2ToTop" animates="NO" id="p6h-vz-o9d"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FsY-2e-98V">
@@ -200,11 +199,12 @@
                         <outlet property="fakeActionView" destination="FsY-2e-98V" id="III-hC-J3e"/>
                         <outlet property="imageView" destination="v8Y-cn-myo" id="0rP-6L-KuZ"/>
                         <outlet property="ptSerifImage" destination="wf9-oc-XOe" id="aYE-PO-zsJ"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="fv2ToTop" animates="NO" id="P7H-0y-mJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDr-T1-CqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687" y="-30"/>
+            <point key="canvasLocation" x="1799" y="-724"/>
         </scene>
         <!--Sucess View Controller-->
         <scene sceneID="fFH-Nk-znS">
@@ -218,20 +218,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="成功" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPM-dz-UEP">
-                                <rect key="frame" x="139" y="166" width="34" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9y7-Xa-H94">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topChar01" translatesAutoresizingMaskIntoConstraints="NO" id="ZAk-bI-ro1">
+                                <rect key="frame" x="40" y="408" width="100" height="120"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgO-5I-mEH">
+                                <rect key="frame" x="78" y="295" width="227" height="145"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Me-wC-h9k">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn:" destination="zTA-aT-I3o" eventType="touchUpInside" id="5El-Gi-MVY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="mcBack" destination="9y7-Xa-H94" id="CBT-EC-2Pm"/>
+                        <outlet property="mcSerifImage" destination="TgO-5I-mEH" id="2Bo-LU-jkf"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="SucessToTop" animates="NO" id="RSY-HE-4Wh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiq-xg-MA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="657"/>
+            <point key="canvasLocation" x="1130" y="796"/>
         </scene>
     </scenes>
     <resources>
@@ -247,4 +264,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="RSY-HE-4Wh"/>
+    </inferredMetricsTieBreakers>
 </document>

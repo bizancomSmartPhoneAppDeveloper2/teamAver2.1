@@ -94,6 +94,11 @@
     self.ptSerifImage.image = [UIImage imageNamed:@"hackSerif02"];
 }
 
+//最後のセリフを表示するメソッド
+-(void)changeSerif3{
+    self.ptSerifImage.image = [UIImage imageNamed:@"hackSerif03"];
+}
+
 //フェイクアクション関係メソッド集
 -(void)slideStart{
     myTimer=[NSTimer scheduledTimerWithTimeInterval:0.7
@@ -136,7 +141,16 @@
     [self performSegueWithIdentifier:@"fv2ToTop" sender:self];
 }
 
+//「ココイケ」と発音するメソッド
+-(void)sayKokoike{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"kokoike"ofType:@"wav"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    self.fakeSound = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:NULL];
+    [self.fakeSound play];
+}
+
 - (IBAction)btnBack:(UIButton *)sender {
+    [self changeSerif3];
     // アニメーション用画像を配列（imageList）にセット
     NSMutableArray *imageList = [NSMutableArray array];
     for (NSInteger i = 1; i <= 7; i++) {
@@ -151,6 +165,7 @@
     // Sart Animating!
     [self.charView startAnimating];
     
-    [self performSelector:@selector(backTop) withObject:nil afterDelay:5];
+    [self performSelector:@selector(sayKokoike) withObject:nil afterDelay:2];
+    [self performSelector:@selector(backTop) withObject:nil afterDelay:3];
 }
 @end

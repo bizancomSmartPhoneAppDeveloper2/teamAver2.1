@@ -4,6 +4,7 @@
 //
 //  Created by ビザンコムマック０７ on 2014/09/25.
 //  Copyright (c) 2014年 mycompany. All rights reserved.
+//初期画面のボタンを押したときに遷移される画面の管理クラス
 
 #import "SecondViewController.h"
 #import "Anotetion.h"
@@ -11,8 +12,10 @@
 @interface SecondViewController ()<CLLocationManagerDelegate,MKMapViewDelegate>{
     //GPSを起動するための変数
     CLLocationManager *manager;
-    //現在の緯度と経度を格納するための変数
+    //起動したときの緯度と経度を格納するための変数
     CLLocationCoordinate2D nowlocation;
+    //レストランの緯度と経度を格納するための変数
+    CLLocationCoordinate2D reslocation;
     //昼飯の店舗の探すAPIのURLの文字列を格納するための変数
     NSString *resurlstr;
     //緯度と経度で距離を導くAPIのURLの文字列を格納するための変数
@@ -37,6 +40,10 @@
     BOOL start;
     //アノテーションの変数
     Anotetion *anotetion;
+    //制限時間の分を表す変数
+    int minute;
+    //制限時間の秒を表す変数
+    int seconds;
     
 }
 
@@ -50,6 +57,8 @@
     self.backbutton.hidden = YES;
     start = YES;
     choicedis = 0.8;
+    //timelabelを非表示
+    self.timelabel.hidden = YES;
     //mapを非表示にする
     self.map.hidden = YES;
     //配列を初期化
@@ -64,7 +73,7 @@
     if ([manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         //requestWhenInUseAuthorizationを実行
         //位置情報の使用をアプリ起動時のみ許可してもらうよう要求
-        [manager requestAlwaysAuthorization];
+        [manager requestWhenInUseAuthorization];
     }
     //GPSを使用する
     [manager startUpdatingLocation];
@@ -107,6 +116,14 @@
         //setupメソッドを呼ぶ
         [self setup];
         start = NO;
+    }
+    //レストランの緯度と経度がともに0度でないか
+    if ((reslocation.latitude != 0) && (reslocation.longitude != 0)) {
+        //レストランの緯度と経度がともに現在の経度と緯度であるかどうか
+        if ((reslocation.latitude == location.coordinate.latitude)&& (reslocation.longitude == location.coordinate.longitude)) {
+            //成功画面に移る
+            [self performSegueWithIdentifier:@"sucesssegue" sender:self];
+        }
     }
 }
 
@@ -367,10 +384,15 @@
             self.activity.hidesWhenStopped = YES;
             //resarrayの要素があるかどうか
             if ([resarray count] > 0) {
+                //分と秒の初期設定
+                minute = 1;
+                seconds = 0;
                 //現在地を青丸で表示する
                 self.map.showsUserLocation = YES;
                 //mapを表示する
                 self.map.hidden = NO;
+                //timelabelを表示
+                //self.label.hidden = NO;
                 //メソッドresanotetionを実行
                 [self resanotetion];
                 //GPSを起動
@@ -422,29 +444,28 @@
     NSString *janl = [[@"(" stringByAppendingString:[choicearray objectAtIndex:3]] stringByAppendingString:@")"];
         //現在の経度と緯度から指定されたレストランの経度と緯度の距離を格納
     float dis = [self distance:keido latitude:ido longitude:[choicearray objectAtIndex:1] newlatitude:[choicearray objectAtIndex:2]];
-    //緯度と経度情報を格納する変数の初期化
-    CLLocationCoordinate2D co;
     //経度の文字列(choicearrayの1番目の要素)をdouble型にキャストしたものを格納
-    co.longitude = [[choicearray objectAtIndex:1] doubleValue];
+    reslocation.longitude = [[choicearray objectAtIndex:1] doubleValue];
     //緯度の文字列(choicearrayの2番目の要素)をdouble型にキャストしたものを格納
-    co.latitude = [[choicearray objectAtIndex:2] doubleValue];
+    reslocation.latitude = [[choicearray objectAtIndex:2] doubleValue];
     //MKCooredinateRegionの変数の初期化
     MKCoordinateRegion region = self.map.region;
     //マップが表示された時の中心の経度設定
-    region.center.longitude = (nowlocation.longitude + co.longitude)/2;
+    region.center.longitude = (nowlocation.longitude + reslocation.longitude)/2;
     //マップが表示された時の中心の緯度設定
-    region.center.latitude = (nowlocation.latitude + co.latitude)/2;
+    region.center.latitude = (nowlocation.latitude + reslocation.latitude)/2;
     //1度を約111.2kmとする
     //現在地から店の距離によってマップの縮尺度を設定
     region.span.latitudeDelta = (dis + 0.1) / 111.2;
     region.span.longitudeDelta = (dis + 0.1) / 111.2;
     [self.map setRegion:region];
     //アノテーションを初期化
-    anotetion = [[Anotetion alloc] initwithCoordinate:co];
+    anotetion = [[Anotetion alloc] initwithCoordinate:reslocation];
     //アノテーションのタイトルを店の名前にする
     anotetion.title = [[choicearray objectAtIndex:0]stringByAppendingString:janl];
     //アノテーションのサブタイトルを電話番号にする
     anotetion.subtitle = [choicearray objectAtIndex:4];
+    //今すぐに(店名)に行けとラベルに表示
     self.label.text = [@"今すぐに" stringByAppendingString:[[choicearray objectAtIndex:0]stringByAppendingString:janl]];
     self.label.text = [self.label.text stringByAppendingString:@"に行け"];
     //マップにアノテーションを追加
@@ -461,5 +482,41 @@
 -(void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error{
     NSLog(@"GPS起動しません");
     self.label.text = @"GPS起動しません";
+}
+
+//カウントダウン用のメソッド
+-(void)countdown{
+    //秒の数が0であるか
+    if (seconds == 0) {
+        //分の数をデクリメント
+        minute--;
+        //秒の数を59にする
+        seconds = 59;
+    }else{
+        //秒の数をデクリメント
+        seconds--;
+    }
+    //秒と分の数がともに0であるか
+    if ((minute == 0) && (seconds == 0)) {
+        //失敗の画面に移る
+        [self performSegueWithIdentifier:@"failsegue" sender:self];
+    }
+    //timelabelに表示する文字列を設定
+    self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
+    
+}
+
+//マップのデータが読み込まれた後呼ばれるメソッド
+-(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
+    //timelabelが非表示であるか
+    //このメソッドが何度も呼ばれる可能性があるため上記の条件を設定
+    if (self.timelabel.hidden) {
+        //timelabelの表示する文字列の設定
+        self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
+        //timelabelを表示
+        self.timelabel.hidden = NO;
+        //1秒ごとにメソッドcountdownを実行
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+    }
 }
 @end

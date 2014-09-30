@@ -25,6 +25,8 @@
 - (IBAction)back:(id)sender;
 //戻るボタン
 @property (weak, nonatomic) IBOutlet UIButton *backbutton;
+//制限時間を表示するためのラベル
+@property (weak, nonatomic) IBOutlet UILabel *timelabel;
 
 
 @end

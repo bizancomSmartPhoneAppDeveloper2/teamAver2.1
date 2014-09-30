@@ -43,7 +43,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="charaImg" destination="5x8-Z5-keu" id="yto-cW-K74"/>
-                        <segue destination="abc-Sp-vhg" kind="modal" identifier="firstsegue" id="3I6-GP-GG8"/>
+                        <segue destination="abc-Sp-vhg" kind="modal" identifier="firstsegue" animates="NO" id="3I6-GP-GG8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -119,20 +119,92 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="失敗" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2h-fz-XuD">
-                                <rect key="frame" x="139" y="154" width="34" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cauBack01" translatesAutoresizingMaskIntoConstraints="NO" id="F3S-Lx-JkK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTm-NS-Djp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnBack:" destination="GyG-A3-J0X" eventType="touchUpInside" id="Xdj-5A-e37"/>
+                                    <segue destination="eCV-be-c59" kind="modal" identifier="failsegue2" animates="NO" id="X5u-jK-AGj"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topChar01" translatesAutoresizingMaskIntoConstraints="NO" id="7cJ-yK-SFk">
+                                <rect key="frame" x="110" y="293" width="100" height="120"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6rd-X3-YPu">
+                                <rect key="frame" x="141" y="207" width="160" height="110"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B22-Nr-GDD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="580"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="ctBack" destination="F3S-Lx-JkK" id="dH4-7P-Z4T"/>
+                        <outlet property="ctEffectImage" destination="B22-Nr-GDD" id="qyu-bg-MF1"/>
+                        <outlet property="ctSerifImage" destination="6rd-X3-YPu" id="WlM-Tq-k8Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhZ-A2-zoq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1257" y="-30"/>
+        </scene>
+        <!--Fail View Controller2-->
+        <scene sceneID="oAE-0h-y4j">
+            <objects>
+                <viewController id="eCV-be-c59" customClass="FailViewController2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oPz-bs-8Eg"/>
+                        <viewControllerLayoutGuide type="bottom" id="y2R-VT-fTu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yQn-AM-HkY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hackBack01" translatesAutoresizingMaskIntoConstraints="NO" id="v8Y-cn-myo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVM-Ux-4th">
+                                <rect key="frame" x="0.0" y="-7" width="320" height="575"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnBack:" destination="eCV-be-c59" eventType="touchUpInside" id="MV6-tO-Vqi"/>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="fv2ToTop" animates="NO" id="p6h-vz-o9d"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FsY-2e-98V">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="topChar01" translatesAutoresizingMaskIntoConstraints="NO" id="kb9-z1-KKO">
+                                <rect key="frame" x="29" y="417" width="100" height="120"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wf9-oc-XOe">
+                                <rect key="frame" x="74" y="333" width="221" height="110"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VBu-fd-Mht"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="btnBack" destination="yVM-Ux-4th" id="5w9-tP-Wey"/>
+                        <outlet property="charView" destination="kb9-z1-KKO" id="czE-gi-mYm"/>
+                        <outlet property="fakeActionView" destination="FsY-2e-98V" id="III-hC-J3e"/>
+                        <outlet property="imageView" destination="v8Y-cn-myo" id="0rP-6L-KuZ"/>
+                        <outlet property="ptSerifImage" destination="wf9-oc-XOe" id="aYE-PO-zsJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bDr-T1-CqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1687" y="-30"/>
         </scene>
         <!--Sucess View Controller-->
         <scene sceneID="fFH-Nk-znS">
@@ -163,6 +235,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cauBack01" width="640" height="1136"/>
+        <image name="hackBack01" width="640" height="1136"/>
         <image name="topBack" width="640" height="1136"/>
         <image name="topBtn01" width="300" height="80"/>
         <image name="topBtn02" width="300" height="80"/>

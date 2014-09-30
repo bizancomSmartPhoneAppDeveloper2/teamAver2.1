@@ -20,6 +20,11 @@
 		87E57A2619D3CFD100F6A9FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */; };
 		87E57A3219D3CFD100F6A9FD /* KOKOIKETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */; };
 		87ED273D19D3DE3400B815CB /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87ED273C19D3DE3400B815CB /* SecondViewController.m */; };
+		F4C8DB0C19DA44F40096A4E0 /* kokoike.wav in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB0B19DA44F40096A4E0 /* kokoike.wav */; };
+		F4C8DB0E19DA4A660096A4E0 /* siren1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB0D19DA4A660096A4E0 /* siren1.mp3 */; };
+		F4C8DB1119DA4B5E0096A4E0 /* FailViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C8DB1019DA4B5E0096A4E0 /* FailViewController2.m */; };
+		F4C8DB1419DA4FED0096A4E0 /* iphonedefault_an.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB1219DA4FED0096A4E0 /* iphonedefault_an.mp3 */; };
+		F4C8DB1519DA4FED0096A4E0 /* drum-roll1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F4C8DB1319DA4FED0096A4E0 /* drum-roll1.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,12 @@
 		87E57A3119D3CFD100F6A9FD /* KOKOIKETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KOKOIKETests.m; sourceTree = "<group>"; };
 		87ED273B19D3DE3400B815CB /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		87ED273C19D3DE3400B815CB /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		F4C8DB0B19DA44F40096A4E0 /* kokoike.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kokoike.wav; sourceTree = "<group>"; };
+		F4C8DB0D19DA4A660096A4E0 /* siren1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = siren1.mp3; sourceTree = "<group>"; };
+		F4C8DB0F19DA4B5E0096A4E0 /* FailViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailViewController2.h; sourceTree = "<group>"; };
+		F4C8DB1019DA4B5E0096A4E0 /* FailViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailViewController2.m; sourceTree = "<group>"; };
+		F4C8DB1219DA4FED0096A4E0 /* iphonedefault_an.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = iphonedefault_an.mp3; sourceTree = "<group>"; };
+		F4C8DB1319DA4FED0096A4E0 /* drum-roll1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "drum-roll1.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +124,8 @@
 				87ED273B19D3DE3400B815CB /* SecondViewController.h */,
 				871F158119D96BD000D95AC4 /* FailViewController.h */,
 				871F158219D96BD000D95AC4 /* FailViewController.m */,
+				F4C8DB0F19DA4B5E0096A4E0 /* FailViewController2.h */,
+				F4C8DB1019DA4B5E0096A4E0 /* FailViewController2.m */,
 				87ED273C19D3DE3400B815CB /* SecondViewController.m */,
 				87E57A2219D3CFD100F6A9FD /* Images.xcassets */,
 				87E57A2419D3CFD100F6A9FD /* LaunchScreen.xib */,
@@ -124,7 +137,11 @@
 		87E57A1519D3CFD100F6A9FD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F4C8DB1219DA4FED0096A4E0 /* iphonedefault_an.mp3 */,
+				F4C8DB1319DA4FED0096A4E0 /* drum-roll1.mp3 */,
 				87E57A1619D3CFD100F6A9FD /* Info.plist */,
+				F4C8DB0B19DA44F40096A4E0 /* kokoike.wav */,
+				F4C8DB0D19DA4A660096A4E0 /* siren1.mp3 */,
 				87E57A1719D3CFD100F6A9FD /* main.m */,
 			);
 			name = "Supporting Files";
@@ -227,9 +244,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C8DB1419DA4FED0096A4E0 /* iphonedefault_an.mp3 in Resources */,
+				F4C8DB0C19DA44F40096A4E0 /* kokoike.wav in Resources */,
 				87E57A2119D3CFD100F6A9FD /* Main.storyboard in Resources */,
 				87E57A2619D3CFD100F6A9FD /* LaunchScreen.xib in Resources */,
+				F4C8DB0E19DA4A660096A4E0 /* siren1.mp3 in Resources */,
 				87E57A2319D3CFD100F6A9FD /* Images.xcassets in Resources */,
+				F4C8DB1519DA4FED0096A4E0 /* drum-roll1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +273,7 @@
 				87E57A1E19D3CFD100F6A9FD /* ViewController.m in Sources */,
 				871F158319D96BD000D95AC4 /* FailViewController.m in Sources */,
 				8709A5B819D81CAF001E4E1D /* Anotetion.m in Sources */,
+				F4C8DB1119DA4B5E0096A4E0 /* FailViewController2.m in Sources */,
 				87E57A1B19D3CFD100F6A9FD /* AppDelegate.m in Sources */,
 				87E57A1819D3CFD100F6A9FD /* main.m in Sources */,
 			);

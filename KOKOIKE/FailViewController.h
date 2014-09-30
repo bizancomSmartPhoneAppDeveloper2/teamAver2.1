@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface FailViewController : UIViewController
-
+//背景
+@property (weak, nonatomic) IBOutlet UIImageView *ctBack;
+//フキダシ
+@property (weak, nonatomic) IBOutlet UIImageView *ctSerifImage;
+//ボタン押した後の集中線
+@property (weak, nonatomic) IBOutlet UIImageView *ctEffectImage;
 @end

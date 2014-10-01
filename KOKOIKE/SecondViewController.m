@@ -48,6 +48,7 @@
     int seconds;
     //吹き出しの台詞を変えるために使うカウント変数
     int count;
+    NSTimer *timer;
 }
 
 //音源用のプロパティを準備
@@ -127,6 +128,9 @@
     if ((reslocation.latitude != 0) && (reslocation.longitude != 0)) {
         //レストランの緯度と経度がともに現在の経度と緯度であるかどうか
         if ((reslocation.latitude == location.coordinate.latitude)&& (reslocation.longitude == location.coordinate.longitude)) {
+            //タイマーをとめる
+            [timer invalidate];
+            timer = nil;
             //成功画面に移る
             [self performSegueWithIdentifier:@"sucesssegue" sender:self];
         }
@@ -492,6 +496,18 @@
 //    self.label.text = [self.label.text stringByAppendingString:@"に行け"];
     //マップにアノテーションを追加
     [self.map addAnnotation:anotetion];
+    if (self.timelabel.hidden) {
+        
+        //timelabelの表示する文字列の設定
+        self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
+        //timelabelを表示
+        self.timelabel.hidden = NO;
+        self.fukidashi.text = @"すぐ行け!";
+        //1秒ごとにメソッドcountdownを実行
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+        self.timelabel.text = @"";
+    }
+
 }
 
 
@@ -516,6 +532,9 @@
     }
     //秒と分の数がともに0であるか
     if ((minute == 0) && (seconds == 0)) {
+        //タイマーを止める
+        [timer invalidate];
+        timer = nil;
         //失敗の画面に移る
         [self performSegueWithIdentifier:@"failsegue" sender:self];
         
@@ -528,7 +547,7 @@
     //timelabelに表示する文字列を設定
     self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
     self.fukidashi.hidden = NO;
-    //countが3で割り切れるか
+    //countが2で割り切れるか
     if (count % 2 == 0) {
         if ([self.fukidashi.text isEqualToString:@"はよ行け!"]) {
             self.fukidashi.text = @"すぐ行け!";
@@ -540,18 +559,9 @@
     
 }
 
-//マップのデータが読み込まれた後呼ばれるメソッド
--(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView{
-    //timelabelが非表示であるか
-    //このメソッドが何度も呼ばれる可能性があるため上記の条件を設定
-    if (self.timelabel.hidden) {
-        //timelabelの表示する文字列の設定
-        self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
-        //timelabelを表示
-        self.timelabel.hidden = NO;
-        self.fukidashi.text = @"すぐ行け!";
-        //1秒ごとにメソッドcountdownを実行
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(countdown) userInfo:nil repeats:YES];
-    }
+-(void)viewWillDisappear:(BOOL)animated{
+    [timer invalidate];
+    timer = nil;
+    
 }
 @end

@@ -82,6 +82,10 @@
         //位置情報の使用をアプリ起動時のみ許可してもらうよう要求
         [manager requestWhenInUseAuthorization];
     }
+    //測位の精度を10mに指定する
+    manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    //位置情報取得間隔を10mに指定する
+    manager.distanceFilter = 10.0;
     //GPSを使用する
     [manager startUpdatingLocation];
     //レストラン情報取得apiのURLの文字列を格納
@@ -447,7 +451,7 @@
             //anotetionとpinを用いて値を代入
             av = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pin];
             //表示する画像を設定
-            av.image = [UIImage imageNamed:@"pinsample.png"];
+            av.image = [UIImage imageNamed:@"mappin2.png"];
             //ピンをクリックしたときに情報を表示するようにする
             av.canShowCallout = YES;
         }

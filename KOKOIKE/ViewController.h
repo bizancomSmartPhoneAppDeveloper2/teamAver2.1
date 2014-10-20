@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
-//移動手段を決めるための選択肢のプロパティ
-@property (weak, nonatomic) IBOutlet UIPickerView *movepicker;
+
 //ボタンを押したときに呼ばれるメソッド
 - (IBAction)firstmove:(id)sender;
 //キャラクター用のイメージビュー

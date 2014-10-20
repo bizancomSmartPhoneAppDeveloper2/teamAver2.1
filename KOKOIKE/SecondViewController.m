@@ -59,9 +59,7 @@
 @implementation SecondViewController
 
 - (void)viewDidLoad {
-    //吹き出しラベルを非表示
-    self.fukidashi.hidden = YES;
-
+    self.fukidashi.text = @"まあ待て";
     start = YES;
     choicedis = 0.8;
     //timelabelを非表示
@@ -130,8 +128,11 @@
     }
     //レストランの緯度と経度がともに0度でないか
     if ((reslocation.latitude != 0) && (reslocation.longitude != 0)) {
-        //レストランの緯度と経度がともに現在の経度と緯度であるかどうか
-        if ((reslocation.latitude == location.coordinate.latitude)&& (reslocation.longitude == location.coordinate.longitude)) {
+        //レストランと現在の位置情報を表す変数
+        CLLocation *from = [[CLLocation alloc] initWithLatitude:nowlocation.latitude longitude:nowlocation.longitude];
+        CLLocation *to = [[CLLocation alloc] initWithLatitude:reslocation.latitude longitude:reslocation.longitude];
+        //レストランと現在位置の距離が10m以内か
+        if ([from distanceFromLocation:to] < 10) {
             //タイマーをとめる
             [timer invalidate];
             timer = nil;
@@ -163,6 +164,7 @@
             //県から町までの名前の文字列を生成
             //dicのprefectureの要素が県の名前、cityの要素が市の名前、townの要素が町の名前でありそれら結合している
             NSString *town = [[[dic objectForKey:@"prefecture"]stringByAppendingString:[dic objectForKey:@"city"]] stringByAppendingString:[dic objectForKey:@"town"]];
+            //文字列townから括弧の文字を消す
             town = [town stringByReplacingOccurrencesOfString:@"（" withString:@""];
             town = [town stringByReplacingOccurrencesOfString:@"）" withString:@""];
             //町の情報の配列を生成
@@ -176,31 +178,6 @@
     //配列を返す
     return returnarray;
 }
-
-
-//2つの緯度と経度を用いて距離を返すメソッド
-//引数fromx(1つめの経度),fromy(1つめの緯度),tox(2つめの経度),toy(2つめの緯度)
--(float)distance:(NSString*)fromx latitude:(NSString*)fromy longitude:(NSString*)tox newlatitude:(NSString*)toy{
-    //値を返すための変数の初期化
-    float dis = 0;
-    //disurlstrの中にある(fromx)という文字列を変数のfromxの値に置換
-    NSString *str = [disurlstr stringByReplacingOccurrencesOfString:@"(fromx)" withString:fromx]
-    ;
-    //strの中にある(fromy)という文字列を変数のfromyの値に置換
-    str = [str stringByReplacingOccurrencesOfString:@"(fromy)" withString:fromy];
-    //strの中にある(tox)という文字列を変数のtoxの値に置換
-    str = [str stringByReplacingOccurrencesOfString:@"(tox)" withString:tox];
-    //strの中にある(toy)という文字列を変数のtoyの値に置換
-    str = [str stringByReplacingOccurrencesOfString:@"(toy)" withString:toy];
-    //strを引数にしてJSONDataの返り値を生成
-    NSDictionary *dic = [self JSONData:str];
-    //dicの中にある距離の文字列を格納
-    NSString *disstr = [[[[dic objectForKey:@"Feature"] objectAtIndex:0] objectForKey:@"Geometry"] objectForKey:@"Distance"];
-    //disstrをfloat型に変換したデータを返す
-    dis = [disstr floatValue];
-    return dis;
-}
-
 
 //JSONオブジェクト(NSDictionary)のデータが返ってくるメソッド
 -(NSDictionary*)JSONData:(NSString*)url{
@@ -234,97 +211,15 @@
     for (int i = 0; i < [firstarray count]; i++) {
         //firstarrayのi番目の要素を格納
         NSArray *choicearray = [firstarray objectAtIndex:i];
-        //現在の緯度と経度からchoicearrayにある経度と緯度の距離がchoicedis以下であるか
-        if (choicedis >= [self distance:[choicearray objectAtIndex:1] latitude:[choicearray objectAtIndex:2] longitude:keido newlatitude:ido]) {
-            //townarrayの末尾にchoicearrayを追加
             [townarray addObject:choicearray];
             
-            NSLog(@"町追加(第1段階)");
-            /*
-            NSLog(@"名前 %@",[choicearray objectAtIndex:0]);
-            NSLog(@"経度 %@",[choicearray objectAtIndex:1]);
-            NSLog(@"緯度 %@",[choicearray objectAtIndex:2]);
-            NSLog(@"%f",[self distance:[choicearray objectAtIndex:1] latitude:[choicearray objectAtIndex:2] longitude:keido newlatitude:ido]);
-             */
-        }
+            NSLog(@"町追加");
     }
-    /*
-     大量の情報を取るためコメントアウト
-    //townarrayの要素の数の繰り返しの処理を行う
-    for (int i = 0; i < [townarray count]; i++) {
-        //townarrayのi番目の要素を格納
-        //データ型{町の名前、経度、緯度}
-        NSArray *array1 = [townarray objectAtIndex:i];
-        //array1に格納されている緯度と経度を用いて町の周辺情報を格納
-        //データ型{{町の名前、経度、緯度},{町の名前、経度、緯度},....,{町の名前、経度、緯度}}
-        NSArray *array2 = [self arraytown:[array1 objectAtIndex:1] latitude:[array1 objectAtIndex:2]];
-        //array2の要素の数の繰り返し処理を行う
-        for (int k = 0;k < [array2 count]; k++) {
-                //array2のk番目に格納されている町の情報を格納
-                //データ型{町の名前、経度、緯度}
-                NSArray *array3 = [array2 objectAtIndex:k];
-            //現在の緯度と経度とarray3の緯度と経度の距離がchoicedisより大きければkのループ処理が最初に戻る
-                if (choicedis < [self distance:[array3 objectAtIndex:1] latitude:[array3 objectAtIndex:2] longitude:keido newlatitude:ido]) {
-                    
-                    NSLog(@"町追加されない(距離が大きい)(第2段階)");
-     
-                    NSLog(@"名前 %@",[array3 objectAtIndex:0]);
-                    NSLog(@"経度 %@",[array3 objectAtIndex:1]);
-                    NSLog(@"緯度 %@",[array3 objectAtIndex:2]);
-                    NSLog(@"距離　%f",[self distance:[array3 objectAtIndex:1] latitude:[array3 objectAtIndex:2] longitude:keido newlatitude:ido]);
-     
-                    continue;
-                }
-            //townarrayに要素を追加するかどうか判定するためのBOOL変数
-                BOOL add = true;
-            //townarrayの要素の数の繰り返しの処理を行う
-            for (int n = 0; n < [townarray count]; n++) {
-                //array3とtownarrayのn番目の要素が同じ配列であるか
-                if ([array3 isEqualToArray:[townarray objectAtIndex:n]]) {
-                    
-                    NSLog(@"追加されない(かぶっている)(第2段階)");
 
-                    NSLog(@"名前 %@",[array3 objectAtIndex:0]);
-                    NSLog(@"経度 %@",[array3 objectAtIndex:1]);
-                    NSLog(@"緯度 %@",[array3 objectAtIndex:2]);
-                     
-                    //addをfalseにして繰り返し処理をやめる
-                    add = false;
-                    break;
-                    }
-                }
-            //addがtrueであるか
-            if (add) {
-                //townarrayの末尾にarray3を追加する
-                [townarray addObject:array3];
-                
-                    NSLog(@"町追加(第2段階)");
-                    NSLog(@"名前 %@",[array3 objectAtIndex:0]);
-                    NSLog(@"経度 %@",[array3 objectAtIndex:1]);
-                    NSLog(@"緯度 %@",[array3 objectAtIndex:2]);
-                 
-                }
-            
-            }
-    }
-*/
 }
 
 //町の情報をもとにレストランの情報を取得するためのメソッド
 -(void)reschoice{
-    //曜日のディクショナリを生成
-    //NSDictionary *weekdic = [NSDictionary dictionaryWithObjectsAndKeys:@"日曜日",@"Sunday", @"月曜日",@"Monday",@"火曜日",@"Tuesday",@"水曜日",@"Wednesday",@"木曜日",@"Thursday",@"金曜日",@"Friday",@"土曜日",@"Saturday",nil];
-    //日付フォーマットオブジェクト生成
-    NSDateFormatter *dateformattter = [[NSDateFormatter alloc]init];
-    //フォーマットを曜日が表示するように設定
-    [dateformattter setDateFormat:@"EEEE"];
-    //現在の曜日の文字列を格納
-    //NSString *nowday = [weekdic objectForKey:[dateformattter stringFromDate:[NSDate date]]];
-    
-    //現在の経度の文字列を格納
-    NSString *keido = [NSString stringWithFormat:@"%f",nowlocation.longitude];
-    //現在の緯度の文字列を格納
-    NSString *ido = [NSString stringWithFormat:@"%f",nowlocation.latitude];
     //townarrayの要素の数の繰り返しの処理を行う
     for (int i = 0; i < [townarray count]; i++) {
         //町の名前を格納
@@ -358,26 +253,18 @@
                 for (int n = 0; n < [tmparray count]; n++) {
                     //n番目のデータを格納
                     NSDictionary *tmpdic = [tmparray objectAtIndex:n];
-                    //現在の緯度と経度からレストランの緯度と経度までの距離
-                    float dis = [self distance:keido latitude:ido longitude:[tmpdic objectForKey:@"east_longitude"] newlatitude:[tmpdic objectForKey:@"north_latitude"]];
-                    //休日に関する情報の文字列を取得
-                    //NSString *closeday = [[tmpdic objectForKey:@"closeday"] objectForKey:@"days"];
-                    //closedayの中にnowdayの文字列が含むかどうか調べる変数
-                    //closedayの中にnowdayが含まれいない場合、search.locationにNSNotFoundを返す
-                    /*
-                    NSRange search = [closeday rangeOfString:nowday options:NSAnchoredSearch range:NSMakeRange(0, [closeday length]) locale:nil];
-                     */
+                    //店の位置情報を表す変数
+                    CLLocation *tmplocation = [[CLLocation alloc]initWithLatitude:[[tmpdic objectForKey:@"north_latitude"] doubleValue] longitude:[[tmpdic objectForKey:@"east_longitude"] doubleValue]];
+                    //起動したときの位置情報を表す変数
+                    CLLocation *fromlocation = [[CLLocation alloc]initWithLatitude:nowlocation.latitude longitude:nowlocation.longitude];
+                    float dis = (float)[tmplocation distanceFromLocation:fromlocation] / 1000;
+
                     
                     //現在の緯度と経度からレストランの緯度と経度までの距離が指定距離より低いか
                     if (choicedis > dis) {
                         //resarrayに追加する配列を生成
                         NSArray *addarray = [NSArray arrayWithObjects:[tmpdic objectForKey:@"name"],[tmpdic objectForKey:@"east_longitude"],[tmpdic objectForKey:@"north_latitude"], [[tmpdic objectForKey:@"category"] objectForKey:@"name"],[tmpdic objectForKey:@"tel"],nil];
-                        /*
-                        NSLog(@"%@",[addarray objectAtIndex:0]);
-                        NSLog(@"%@",[addarray objectAtIndex:1]);
-                        NSLog(@"%@",[addarray objectAtIndex:2]);
-                        NSLog(@"%f",[self distance:keido latitude:ido longitude:[addarray objectAtIndex:1] newlatitude:[addarray objectAtIndex:2]]);
-                         */
+
                         //resarrayの末尾にaddarrayを追加
                         NSLog(@"resarrayの要素を追加");
                         [resarray addObject:addarray];
@@ -413,7 +300,7 @@
             if ([resarray count] > 0) {
                 NSLog(@"検索成功");
                 //分と秒の初期設定
-                minute = 1;
+                minute = 10;
                 seconds = 0;
                 count = 0;
                 //現在地を青丸で表示する
@@ -424,16 +311,12 @@
                 //self.label.hidden = NO;
                 //メソッドresanotetionを実行
                 [self resanotetion];
-                //GPSを起動
-                [manager startUpdatingLocation];
             }else{
                 NSLog(@"検索失敗");
                 //GPSを止める
                 [manager stopUpdatingLocation];
                 //検索失敗画面に移る
                 [self performSegueWithIdentifier:@"NotfoundSegue" sender:self];
-                //お待ちくださいからここにいけという文字列に変更
-                self.label.text = @"再設定してください";
             }
         });
     });
@@ -463,17 +346,18 @@
 
 //レストランのアノテーション追加するためのメソッド
 -(void)resanotetion{
-    //現在の経度の文字列を格納
-    NSString *keido = [NSString stringWithFormat:@"%f",nowlocation.longitude];
-    //現在の緯度の文字列を格納
-    NSString *ido = [NSString stringWithFormat:@"%f",nowlocation.latitude];
     //resarrayの中にある配列からランダム中質
     NSArray *choicearray = [resarray objectAtIndex:arc4random()%[resarray count]];
     
     //レストランのジャンルの名前を格納
     NSString *janl = [[@"(" stringByAppendingString:[choicearray objectAtIndex:3]] stringByAppendingString:@")"];
         //現在の経度と緯度から指定されたレストランの経度と緯度の距離を格納
-    float dis = [self distance:keido latitude:ido longitude:[choicearray objectAtIndex:1] newlatitude:[choicearray objectAtIndex:2]];
+    //起動したときの位置情報を表す変数
+    CLLocation *fromlocation = [[CLLocation alloc]initWithLatitude:nowlocation.latitude longitude:nowlocation.longitude];
+    //レストランの位置情報を表す変数
+    CLLocation *tolocation = [[CLLocation alloc]initWithLatitude:[[choicearray objectAtIndex:2] doubleValue] longitude:[[choicearray objectAtIndex:1] doubleValue]];
+    //レストランと現在地の距離を表す変数
+    float resdis = (float)[tolocation distanceFromLocation:fromlocation] / 1000;
     //経度の文字列(choicearrayの1番目の要素)をdouble型にキャストしたものを格納
     reslocation.longitude = [[choicearray objectAtIndex:1] doubleValue];
     //緯度の文字列(choicearrayの2番目の要素)をdouble型にキャストしたものを格納
@@ -486,8 +370,8 @@
     region.center.latitude = (nowlocation.latitude + reslocation.latitude)/2;
     //1度を約111.2kmとする
     //現在地から店の距離によってマップの縮尺度を設定
-    region.span.latitudeDelta = (dis + 0.15) / 111.2;
-    region.span.longitudeDelta = (dis + 0.15) / 111.2;
+    region.span.latitudeDelta = (resdis + 0.15) / 111.2;
+    region.span.longitudeDelta = (resdis + 0.15) / 111.2;
     [self.map setRegion:region];
     //アノテーションを初期化
     anotetion = [[Anotetion alloc] initwithCoordinate:reslocation];
@@ -500,18 +384,13 @@
 //    self.label.text = [self.label.text stringByAppendingString:@"に行け"];
     //マップにアノテーションを追加
     [self.map addAnnotation:anotetion];
-    if (self.timelabel.hidden) {
         
         //timelabelの表示する文字列の設定
         self.timelabel.text = [NSString stringWithFormat:@"%02d:%02d",minute,seconds];
-        //timelabelを表示
-        self.timelabel.hidden = NO;
         self.fukidashi.text = @"すぐ行け!";
         //1秒ごとにメソッドcountdownを実行
         timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(countdown) userInfo:nil repeats:YES];
-        self.timelabel.text = @"";
-    }
-
+    self.timelabel.hidden = NO;
 }
 
 
@@ -553,19 +432,16 @@
     self.fukidashi.hidden = NO;
     //countが2で割り切れるか
     if (count % 2 == 0) {
+        //はよ行け!という文字列と一緒であるか
         if ([self.fukidashi.text isEqualToString:@"はよ行け!"]) {
+            //表示する文字列をすぐ行けと設定
             self.fukidashi.text = @"すぐ行け!";
         } else {
+            //表示する文字列をはよ行けと設定
             self.fukidashi.text = @"はよ行け!";
             
         }
     }
-    
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [timer invalidate];
-    timer = nil;
     
 }
 @end

@@ -86,6 +86,7 @@
 
 //画面全体がボタンです
 - (IBAction)backBtn:(UIButton *)sender {
+    self.label.text = @"次も言うこと聞けよ";
     // アニメーション用画像を配列（imageList）にセット
     NSMutableArray *imageList = [NSMutableArray array];
     for (NSInteger i = 1; i <= 7; i++) {
